@@ -1,0 +1,72 @@
+#!/bin/bash
+
+logPath=~/.config/tinypng
+if [ ! -d "$logPath" ]; then
+	mkdir $logPath
+fi
+function info(){
+	echo "$(date "+%Y-%m-%d %H:%M:%S")==>[info]===> $1" >> $logPath/log.txt
+}
+function config(){
+  touch $logPath/tinypng.conf
+  echo $1 > $logPath/tinypng.conf
+}
+
+function cs(){
+	key=$(head -n +1 $logPath/tinypng.conf)
+	if [ -d $1 ]
+	then
+		if [ ! -d "$1/tinypng_images" ]; then
+			mkdir $1/tinypng_images
+		fi
+		for file in `ls $1`
+		do
+			singleCs $1/$file $key $1/tinypng_images
+		done 	
+	elif [ -f $1 ]
+	then
+		imagePath=./
+		singleCs $1 $key $imagePath
+	fi
+}
+
+function singleCs(){
+	if [ -f $1 ]
+	then
+		info "$1 开始压缩"
+		result=$(curl --user api:$2 \
+			--data-binary @$1 -i https://api.tinify.com/shrink)
+		info "$1 上传结果：$result"
+		output_response=$(echo "$result" | grep url)
+		url=$(echo $output_response | jq -r '.output .url')
+		info "压缩后地址：$url"
+		imageName=$(basename $1)
+		fileName=${imageName%.*}-$(date +%s).${imageName##*.}
+		info "开始下载文件，文件名：$fileName"
+		curl -o $3/$fileName $url
+		info "下载完成，文件：$3/$fileName"		
+	fi
+}
+
+
+function init(){
+	case "$1" in
+   "-c") cs $2
+   ;;
+   "-config") config $2
+   ;;
+	 "-h") hp 
+   ;;
+	esac
+}
+
+function hp(){
+	echo "     --熊猫压缩脚本，配置文件和日志文件保存在~/.config/tinypng/下"
+	echo "     --脚本放入/usr/local/bin/下可全局访问"
+  echo "参数："
+	echo "     -c [imageUrl or imageFolder]               --压缩图片可压缩单张图片或者整个文件夹下所有图片"
+	echo "     -config [key]                              --压缩图片前需要配置key,key去熊猫压缩申请"
+	echo "     -h                                         --帮助"
+}
+
+init $1 $2
