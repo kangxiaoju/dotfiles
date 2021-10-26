@@ -131,13 +131,14 @@ networkspeed() {
   printf "$networkspeed_color $speed" 
 }
 
-# 需要播放器对Mpris支持，并且需要安装playerctl
+# 需要播放器对Mpris支持,并且依赖playerctl
 song() {
-  # 音乐播放器
   playerName="netease-cloud-music"
   playerShell="playerctl --player=$playerName"
   title=$($playerShell metadata title)
   artist=$($playerShell metadata artist)
+  position=$($playerShell position | sed 's/..\{6\}$//')
+  duration=$($playerShell metadata mpris:length | sed 's/.\{6\}$//')
   upSong(){
     name=$(cat ./song/song)
     icon=$($playerShell metadata mpris:artUrl)
@@ -148,13 +149,14 @@ song() {
   }
   if [ "$title" != "" ]; then
     status=$($playerShell status)
-    if [ "$status" = "Paused" ]; then
+    if [ "$status" = "Playing" ]; then
       printf "$song_color  " 
     else
       printf "$song_color  " 
     fi
     upSong
-    printf "$song_color$title " 
+    printf "$song_color$title [%0d:%02d/%0d:%02d]" $((position%3600/60)) $((position%60)) $((duration%3600/60)) $((duration%60))
+
   fi
 }
 
@@ -163,5 +165,5 @@ weather() {
   printf "$weather_color $w" 
 }
 
-xsetroot -name "$(song)$(networkspeed) $(weather) $(alsa) $(clock) $(pkg_updates) $(keyboard)"
+xsetroot -name "$(networkspeed) $(song)$(weather) $(alsa) $(clock) $(pkg_updates) $(keyboard)"
 exit 0
