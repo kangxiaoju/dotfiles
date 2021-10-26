@@ -137,8 +137,7 @@ song() {
   playerShell="playerctl --player=$playerName"
   title=$($playerShell metadata title)
   artist=$($playerShell metadata artist)
-  position=$($playerShell position | sed 's/..\{6\}$//')
-  duration=$($playerShell metadata mpris:length | sed 's/.\{6\}$//')
+  songDate=$($playerShell metadata --format '{{ duration(position) }}/{{ duration(mpris:length) }}')
   upSong(){
     name=$(cat ./song/song)
     icon=$($playerShell metadata mpris:artUrl)
@@ -155,8 +154,7 @@ song() {
       printf "$song_color  " 
     fi
     upSong
-    printf "$song_color$title [%0d:%02d/%0d:%02d]" $((position%3600/60)) $((position%60)) $((duration%3600/60)) $((duration%60))
-
+    printf "$song_color$title $songDate"
   fi
 }
 
