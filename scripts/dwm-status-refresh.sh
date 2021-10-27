@@ -132,17 +132,18 @@ networkspeed() {
 }
 
 # 需要播放器对Mpris支持,并且依赖playerctl
-song() {
+songNetease() {
   playerName="netease-cloud-music"
   playerShell="playerctl --player=$playerName"
   title=$($playerShell metadata title)
   artist=$($playerShell metadata artist)
+  album=$($playerShell metadata album)
   songDate=$($playerShell metadata --format '{{ duration(position) }}/{{ duration(mpris:length) }}')
   upSong(){
     name=$(cat ./song/song)
     icon=$($playerShell metadata mpris:artUrl)
     if [ "$title$artist" != "$name" ]; then
-      dunstify -h string:x-dunst-stack-tag:music $title $artist -t 5000 --icon $icon
+      dunstify -h string:x-dunst-stack-tag:music "$title-$artist" $album -t 5000 --icon $icon
     fi
     echo "$title$artist" > ./song/song
   }
@@ -158,10 +159,38 @@ song() {
   fi
 }
 
+# 使用yesplaymusic音乐播放器
+songYesPlay() {
+  musicInfo=$(curl -s 'http://127.0.0.1:27232/player')
+  title=$(echo "$musicInfo" | jq -r '.currentTrack.name')
+  artist=$(echo "$musicInfo" | jq -r '.currentTrack.ar[0].name')
+  album=$(echo "$musicInfo" | jq -r '.currentTrack.al.name')
+  progress=$(echo "$musicInfo" | jq -r '.progress' | sed 's/..\{6\}$//')
+  length=$(echo "$musicInfo" | jq -r '.currentTrack.dt')
+  upSong(){
+    name=$(cat ./song/song)
+    icon=$(echo "$musicInfo" | jq -r '.currentTrack.al.picUrl')
+    if [ "$title$artist" != "$name" ]; then
+      dunstify -h string:x-dunst-stack-tag:music "$title-$artist" $album -t 5000 --icon ~/.config/dunst/icons/head.png
+    fi
+    echo "$title$artist" > ./song/song
+  }
+  if [ "$title" != "" ]; then
+    status=$(playerctl status)
+    if [ "$status" = "Playing" ]; then
+      printf "$song_color  " 
+    else
+      printf "$song_color  " 
+    fi
+    upSong
+    printf "$song_color$title %0d:%02d/%0d:%02d" $((progress%3600/60)) $((progress%60)) $((length/1000%3600/60)) $((length/1000%60))
+  fi
+}
+
 weather() {
   w=$(cat ./weather/weather)
   printf "$weather_color $w" 
 }
 
-xsetroot -name "$(networkspeed) $(song)$(weather) $(alsa) $(clock) $(pkg_updates) $(keyboard)"
+xsetroot -name "$(networkspeed) $(songYesPlay)$(weather) $(alsa) $(clock) $(pkg_updates) $(keyboard)"
 exit 0
