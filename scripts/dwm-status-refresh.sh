@@ -19,6 +19,24 @@ networkspeed_color="^c#81A1C1^^b#1e222a^"
 song_color="^c#BF616A^^b#1e222a^"
 weather_color="^c#FFEF78^^b#1e222a^"
 
+# cpu_color="^c#BD93F9^^b#1e222a^"
+# pkg_icon_color="^c#BD93F9^^b#1e222a^"
+# pkg_text_color="^c#BD93F9^^b#1e222a^"
+# batt_color="^c#BD93F9^"
+# brightness_color="^c#BD93F9^"
+# mem_color="^c#BD93F9^^b#1e222a^"
+# disk_color="^c#BD93F9^^b#1e222a^"
+# wlan_h_color="^c#BD93F9^^b#1e222a^"
+# wlan_n_color="^c#BD93F9^^b#1e222a^"
+# clock_color="^c#BD93F9^^b#1e222a^"
+# keyboard_x_color="^c#F85C50^^b#1e222a^"
+# keyboard_n_color="^c#BD93F9^^b#1e222a^"
+# alsa_x_color="^c#222526^^b#C47Eb7^"
+# alsa_n_color="^c#BD93F9^^b#1e222a^"
+# networkspeed_color="^c#BD93F9^^b#1e222a^"
+# song_color="^c#BD93F9^^b#1e222a^"
+# weather_color="^c#BD93F9^^b#1e222a^"
+
 cpu() {
   cpu_val=$(top -b -n 1 | head -n 4 | grep "%Cpu(s)" | awk '{print $2}' | cut -d 'u' -f 1)
   printf "$cpu_color  $cpu_val%%"
@@ -147,43 +165,14 @@ songNetease() {
     fi
     echo "$title$artist" > ./song/song
   }
+  payStatus="  "
   if [ "$title" != "" ]; then
     status=$($playerShell status)
     if [ "$status" = "Playing" ]; then
-      printf "$song_color  " 
-    else
-      printf "$song_color  " 
+      payStatus=""
     fi
     upSong
-    printf "$song_color$title $songDate"
-  fi
-}
-
-# 使用yesplaymusic音乐播放器
-songYesPlay() {
-  musicInfo=$(curl -s 'http://127.0.0.1:27232/player')
-  title=$(echo "$musicInfo" | jq -r '.currentTrack.name')
-  artist=$(echo "$musicInfo" | jq -r '.currentTrack.ar[0].name')
-  album=$(echo "$musicInfo" | jq -r '.currentTrack.al.name')
-  progress=$(echo "$musicInfo" | jq -r '.progress' | sed 's/..\{6\}$//')
-  length=$(echo "$musicInfo" | jq -r '.currentTrack.dt')
-  upSong(){
-    name=$(cat ./song/song)
-    icon=$(echo "$musicInfo" | jq -r '.currentTrack.al.picUrl')
-    if [ "$title$artist" != "$name" ]; then
-      dunstify -h string:x-dunst-stack-tag:music "$title-$artist" $album -t 5000 --icon ~/.config/dunst/icons/head.png
-    fi
-    echo "$title$artist" > ./song/song
-  }
-  if [ "$title" != "" ]; then
-    status=$(playerctl status)
-    if [ "$status" = "Playing" ]; then
-      printf "$song_color  " 
-    else
-      printf "$song_color  " 
-    fi
-    upSong
-    printf "$song_color$title %0d:%02d/%0d:%02d" $((progress%3600/60)) $((progress%60)) $((length/1000%3600/60)) $((length/1000%60))
+    printf "$song_color$payStatus$title $songDate"
   fi
 }
 
@@ -192,5 +181,5 @@ weather() {
   printf "$weather_color $w" 
 }
 
-xsetroot -name "$(networkspeed) $(songYesPlay)$(weather) $(alsa) $(clock) $(pkg_updates) $(keyboard)"
+xsetroot -name "$(networkspeed) $(songNetease)$(weather) $(alsa) $(clock) $(pkg_updates) $(keyboard)"
 exit 0
