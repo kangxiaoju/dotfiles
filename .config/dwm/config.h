@@ -30,7 +30,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#ffffff";
 /*原颜色 #37474F*/
 static const char col_cyan[]        = "#37474F";
-static const char col_border[]        = "#C678DD";
+static const char col_border[]        = "#caf6bb";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 
@@ -93,7 +93,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL }; 
 static const char *termcmd[]  = { "st", NULL };
-static const char *micorsoftEdgeDev[]  = { "microsoft-edge-dev", NULL };
+static const char *firefox[]  = { "firefox", NULL };
 
 static const char *upvol[]   = { "/home/kael/scripts/vol-up.sh",  NULL };
 static const char *downvol[] = { "/home/kael/scripts/vol-down.sh",  NULL };
@@ -125,7 +125,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_r,                    spawn,          {.v = ranger } },
 	{ MODKEY,              XK_r,                    spawn,          {.v = rofi } },
 	{ MODKEY,              XK_Return,               spawn,          {.v = termcmd } },
-	{ MODKEY,              XK_c,                    spawn,          {.v = micorsoftEdgeDev } },
+	{ MODKEY,              XK_c,                    spawn,          {.v = firefox } },
 	{ MODKEY,              XK_e,                    spawn,          {.v = files } },
 	{ MODKEY,              XK_y,                    spawn,          {.v = calendar } },
 	{ MODKEY|ShiftMask,    XK_t,                    spawn,          {.v = tmuxSessions} },
