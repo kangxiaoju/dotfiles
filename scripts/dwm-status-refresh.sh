@@ -137,7 +137,11 @@ alsa () {
     if [ "$VOL" -eq 0 ] || [ "$isOn" = "off" ]; then
       printf "$alsa_n_color mute!"
     else
-      printf "$alsa_n_color$VOL%%"
+      let total=40
+      let vol2=total*VOL/100
+      let vol3=total-vol2
+      printf "$alsa_n_color^r3,8,$vol2,4^^f$vol2^^c#FFFFFF^^c#cccccc^^r3,8,$vol3,4^^f$vol3^^c#FFFFFF^"
+      #printf "$alsa_n_color$VOL%%"
     fi
   }
   echo -e "$(as_icon) $(as)"
@@ -181,4 +185,5 @@ weather() {
 }
 
 xsetroot -name "$(networkspeed) $(songNetease)$(weather) $(alsa) $(disk) $(mem) $(cpu) $(clock) $(pkg_updates)$(keyboard)"
+
 exit 0
