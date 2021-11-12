@@ -10,13 +10,13 @@ mem_color="^c#FFAF60^^b#1e222a^"
 disk_color="^c#BF616A^^b#1e222a^"
 wlan_h_color="^c#63B4B8^^b#1e222a^"
 wlan_n_color="^c#E02401^^b#1e222a^"
-clock_color="^c#828dd1^^b#1e222a^"
+clock_color="^c#99FEFF^^b#1e222a^"
 keyboard_x_color="^c#F85C50^^b#1e222a^"
 keyboard_n_color="^c#F3C583^^b#1e222a^"
 alsa_x_color="^c#222526^^b#C47Eb7^"
 alsa_n_color="^c#C47Eb7^^b#1e222a^"
 networkspeed_color="^c#81A1C1^^b#1e222a^"
-song_color="^c#BF616A^^b#1e222a^"
+song_color="^c#9AE66E^^b#1e222a^"
 weather_color="^c#FFEF78^^b#1e222a^"
 
 # cpu_color="^c#BD93F9^^b#1e222a^"
@@ -44,12 +44,11 @@ cpu() {
 
 pkg_updates() {
   updates=$(cat ./pkg/pkg)
-  if [ $updates == 0 ]; then
-    printf "$pkg_text_color  Fully Updated"
-  else
+  if [ $updates != 0 ]; then
     printf "$pkg_icon_color  "
-    printf "$pkg_text_color %s updates" $updates
+    printf "$pkg_text_color %s updates " $updates
   fi
+  #printf "$pkg_text_color  Fully Updated"
 }
 
 # battery
@@ -92,17 +91,17 @@ clock() {
 keyboard () {
   srf() {
     if [ "$(fcitx5-remote)" -eq 2 ]; then
-      printf "$keyboard_x_color cn "
+      printf "$keyboard_x_color[cn]"
     else
-      printf "$keyboard_n_color en "
+      printf "$keyboard_n_color[en]"
     fi
   }
 
   capslock() {
     caps=$(xset -q | grep Caps | awk '{ print $4 }')
-    if [ $caps == 'off' ]; then
-      printf "$keyboard_n_color  "
-    else
+    if [ $caps != 'off' ]; then
+      #printf "$keyboard_n_color  "
+      #else
       printf "$keyboard_x_color בּ "
     fi
   }
@@ -110,9 +109,9 @@ keyboard () {
   numlock() {
     num=$(xset -q | grep Num | awk '{ print $8 }')
     if [ $num == 'off' ]; then
-      printf "$keyboard_x_color  "
-    else
-      printf "$keyboard_n_color  "
+      printf "$keyboard_x_color   "
+      #else
+      #printf "$keyboard_n_color  "
     fi
   }
 
@@ -169,7 +168,7 @@ songNetease() {
   if [ "$title" != "" ]; then
     status=$($playerShell status)
     if [ "$status" = "Playing" ]; then
-      payStatus=""
+      payStatus=" "
     fi
     upSong
     printf "$song_color$payStatus$title $songDate"
@@ -181,5 +180,5 @@ weather() {
   printf "$weather_color $w" 
 }
 
-xsetroot -name "$(networkspeed) $(songNetease)$(weather) $(alsa) $(clock) $(pkg_updates) $(keyboard)"
+xsetroot -name "$(networkspeed) $(songNetease)$(weather) $(alsa) $(disk) $(mem) $(cpu) $(clock) $(pkg_updates)$(keyboard)"
 exit 0
