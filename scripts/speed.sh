@@ -35,7 +35,8 @@ do
     dif_out1=$dif_out
     out_unit="B/s"
   fi
-  echo -e "  ${dif_in1} $in_unit    ${dif_out1} $out_unit" > ~/scripts/networkspeed/speed
+  sed -i "1c ${dif_in1} $in_unit" ~/scripts/config
+  sed -i "2c ${dif_out1} $out_unit" ~/scripts/config
   in_old=${in}
   out_old=${out}
 done

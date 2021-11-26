@@ -9,7 +9,7 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 20;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
-static const unsigned int systrayspacing = 0;   /* systray spacing */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 0;     /* 0 means no systray */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
@@ -74,8 +74,8 @@ static const Layout layouts[] = {
 	{ "Kael",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-  { "|||",      tcl },
-  { "###",      gaplessgrid },
+        { "|||",      tcl },
+        { "###",      gaplessgrid },
 };
 
 /* key definitions */
@@ -118,6 +118,7 @@ static const char *ranger[] = { "st", "ranger", NULL };
 static const char *trans[] = { "/home/kael/scripts/trans.sh", NULL };
 static const char *files[] = { "/home/kael/scripts/z_file.sh", NULL };
 static const char *calendar[] = { "/home/kael/scripts/calendar.sh", NULL };
+static const char *trayer[] = { "/home/kael/scripts/trayer.sh", NULL };
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
@@ -131,6 +132,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_t,                    spawn,          {.v = tmuxSessions} },
 	{ MODKEY|ShiftMask,    XK_m,                    spawn,          {.v = setcolemakcmd } },
 	{ MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = lockTool } },
+	{ MODKEY|ControlMask,  XK_t,                    spawn,          {.v = trayer } },
 	{ MODKEY,              XK_p,                    togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ControlMask,  XK_s,                    spawn,          {.v = sktogglecmd } },
 	{ ControlMask|ShiftMask,XK_0,                    spawn,         {.v = trans } },
