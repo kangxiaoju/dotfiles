@@ -48,7 +48,7 @@ while true; do
       sed -i "13c [$lyrics] " $configPath
     fi
   else
-    sed -i "6c ''" $configPath 
+    sed -i "5d null" $configPath 
   fi
 done
 

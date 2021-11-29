@@ -158,11 +158,10 @@ networkspeed() {
 songNetease() {
   configPath="/home/kael/scripts/config"
   lyricsPath="/home/kael/scripts/lyrics.lrc"
-  songId=$(sed -n "5c" $configPath)
-  if [ -n $songId ]; then
+  title=$(sed -n "6p" $configPath)
+  if [ "$title" != "null"  ]; then
     payStatus=" ﱙ "
     status=$(sed -n "12p" $configPath)
-    title=$(sed -n "6p" $configPath)
     lyric=$(sed -n "13p" $configPath)
     position=$(sed -n "9p" $configPath)
     length=$(sed -n "10p" $configPath)
