@@ -5,6 +5,7 @@
 /bin/bash ~/scripts/speed.sh &
 /bin/bash ~/scripts/weather.sh &
 /bin/bash ~/scripts/wp-autochange.sh &
+/bin/bash ~/scripts/song.sh &
 #picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
 # picom -b
 # /bin/bash ~/scripts/tap-to-click.sh &

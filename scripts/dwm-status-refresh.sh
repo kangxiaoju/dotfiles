@@ -44,7 +44,7 @@ cpu() {
 }
 
 pkg_updates() {
-  updates=$(sed -n "5p" ./config)
+  updates=$(sed -n "4p" ./config)
   if [ $updates != 0 ]; then
     printf "$pkg_icon_color  "
     printf "$text_color %s updates " $updates
@@ -156,28 +156,20 @@ networkspeed() {
 
 # 需要播放器对Mpris支持,并且依赖playerctl
 songNetease() {
-  playerName="netease-cloud-music"
-  playerShell="playerctl --player=$playerName"
-  title=$($playerShell metadata title)
-  artist=$($playerShell metadata artist)
-  album=$($playerShell metadata album)
-  songDate=$($playerShell metadata --format '{{ duration(position) }}/{{ duration(mpris:length) }}')
-  upSong(){
-    name=$(sed -n "4p" ./config)
-    icon=$($playerShell metadata mpris:artUrl)
-    if [ "$title$artist" != "$name" ]; then
-      dunstify -h string:x-dunst-stack-tag:music "$title-$artist" $album -t 5000 --icon $icon
-    fi
-    sed -i "4c $title$artist" ./config
-  }
-  payStatus=" ﱙ "
-  if [ "$title" != "" ]; then
-    status=$($playerShell status)
+  configPath="/home/kael/scripts/config"
+  lyricsPath="/home/kael/scripts/lyrics.lrc"
+  songId=$(sed -n "5c" $configPath)
+  if [ -n $songId ]; then
+    payStatus=" ﱙ "
+    status=$(sed -n "12p" $configPath)
+    title=$(sed -n "6p" $configPath)
+    lyric=$(sed -n "13p" $configPath)
+    position=$(sed -n "9p" $configPath)
+    length=$(sed -n "10p" $configPath)
     if [ "$status" = "Playing" ]; then
       payStatus=" ﱘ "
     fi
-    upSong
-    printf "$song_color$payStatus$text_color$title $songDate "
+    printf "$song_color$payStatus$text_color[$title] $lyric$position|$length "
   fi
 }
 

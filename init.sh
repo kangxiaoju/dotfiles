@@ -1,8 +1,8 @@
 #/bin/bash
 # amd;intel;nvidia
-graphicsCard="intel"
+graphicsCard="nvidia"
 # amd: gcn;terascale
-architecture="gcn"
+architecture="terascale"
 
 sudo systemctl enable --now NetworkManager
 sudo systemctl disable NetworkManager-wait-online
@@ -41,7 +41,7 @@ sudo pacman -S --noconfirm --needed base-devel git yay
 
 # 安装dwm
 git clone https://gitee.com/kangxiaoju/dotfiles.git ~/dotfiles
-yay -S --noconfirm --needed ranger rofi feh numlockx wmname flameshot dunst ueberzug xcompmgr network-manager-applet mailsync bc dbus wayland zenity music-dl alsa alsa-utils pick net-tools dnsutils inetutils iproute2 gcc make pavucontrol;
+yay -S --noconfirm --needed ranger rofi feh numlockx wmname flameshot dunst ueberzug xcompmgr network-manager-applet mailsync bc dbus wayland zenity music-dl alsa alsa-utils pick net-tools dnsutils inetutils iproute2 gcc make pavucontrol pkg-config;
 cd ~/dotfiles;
 cp -r ./.config/* ~/.config
 cp -r ./scripts ~/
@@ -50,9 +50,9 @@ cp ./wallpapers/* ~/Pictures/wallpapers/
 cp ~/dotfiles/.xprofile ~/
 sudo cp ~/dotfiles/tinypng /usr/local/bin/
 echo "SPXFKkVgwxhHk0rRbkmjvs9yXVN0FNvk" > ~/.config/tinypng/tinypng.conf
-cd ~/.config/dwm;sudo make clone install
-cd ~/.config/st;sudo make clone install
-echo "[Desktop Entry]
+cd ~/.config/dwm;sudo make clean install
+cd ~/.config/st;sudo make clean install
+sudo echo "[Desktop Entry]
 Name=dwm
 Comment=Suckless window manager
 Exec=/usr/local/bin/dwm
