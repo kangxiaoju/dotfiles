@@ -168,7 +168,7 @@ songNetease() {
     if [ "$status" = "Playing" ]; then
       payStatus=" ﱘ "
     fi
-    printf "$song_color$payStatus$text_color[$title] $lyric$position|$length "
+    printf "$song_color$payStatus$text_color$title-$lyric$position|$length "
   fi
 }
 

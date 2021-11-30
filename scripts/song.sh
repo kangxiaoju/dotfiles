@@ -11,7 +11,7 @@ while true; do
   # 保存需要数据到配置文件
   # 歌曲标题
   title=$($playerShell metadata title)
-  if [ "$title" != "" ]; then
+  if [ -n "$title" ]; then
     songId=$(jq -r '.[]|.track.name,.track.id' $jsonPath | grep -A 1 "$title" | sed -n '2p')
     # 播放当前时间
     position=$($playerShell metadata --format '{{ duration(position) }}')
@@ -48,7 +48,7 @@ while true; do
       sed -i "13c [$lyrics] " $configPath
     fi
   else
-    sed -i "5d null" $configPath 
+    sed -i "6c null" $configPath 
   fi
 done
 
