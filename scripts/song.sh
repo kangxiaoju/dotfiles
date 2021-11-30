@@ -22,6 +22,8 @@ while true; do
     sed -i "9c $position" $configPath 
     sed -i "12c $status" $configPath 
     if [ "$oldSongId" != "$songId" ]; then
+      # 歌曲改变时去掉上一首歌曲歌词
+      sed -i "13c [] " $configPath 
       # 演唱者
       artist=$($playerShell metadata artist)
       # 专辑名称
