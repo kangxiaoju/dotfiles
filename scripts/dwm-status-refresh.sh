@@ -78,8 +78,7 @@ disk() {
 }
 
 wlan() {
-  interface=$(ip route get 8.8.8.8 2>/dev/null| awk '{print $5}')
-  case "$(cat /sys/class/net/$interface/operstate 2>/dev/null)" in
+  case "$(cat /sys/class/net/enp2s0/operstate 2>/dev/null)" in
   up) printf " " ;;
   down) printf " $wlan_n_color 爵$text_color Disconnected " ;;
   esac
@@ -173,11 +172,13 @@ songNetease() {
 }
 
 weather() {
-  w=$(sed -n "3p" ./config)
-  arr=($w)
-  printf "$weather_color ${arr[0]} $text_color${arr[1]}" 
+  w=$(sed -n "3p" ~/scripts/config)
+  result=$(echo $w | grep "Unknown")
+  if [ "$result" = "" ]; then
+    arr=($w)
+    printf "$weather_color ${arr[0]} $text_color${arr[1]}" 
+  fi
 }
-
 xsetroot -name "$(networkspeed) $(weather) $(songNetease)$(alsa) $(disk) $(mem) $(cpu)$(wlan)$(clock) $(pkg_updates)$(keyboard)"
 
 exit 0

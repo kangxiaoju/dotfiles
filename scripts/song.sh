@@ -17,11 +17,11 @@ while true; do
     position=$($playerShell metadata --format '{{ duration(position) }}')
     # 音乐播放器当前状态
     status=$($playerShell status)
-    # 歌曲Id
-    oldSongId=$(sed -n "5p" $configPath)
+    # 歌曲名称
+    oldTitle=$(sed -n "6p" $configPath)
     sed -i "9c $position" $configPath 
     sed -i "12c $status" $configPath 
-    if [ "$oldSongId" != "$songId" ]; then
+    if [ "$title" != "$oldTitle" ]; then
       # 歌曲改变时去掉上一首歌曲歌词
       sed -i "13c [] " $configPath 
       # 演唱者
@@ -45,7 +45,7 @@ while true; do
       sed -i "11c $icon" $configPath 
     fi
     # 写入歌词
-    lyrics=$(cat $lyricsPath | grep "$position" | awk -F ']' '{print $2}')
+    lyrics=$(cat $lyricsPath | grep "$position" | awk -F ']' '{print $NF}' | head -n 1)
     if [ -n "$lyrics" ]; then 
       sed -i "13c [$lyrics] " $configPath
     fi
