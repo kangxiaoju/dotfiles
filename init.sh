@@ -108,8 +108,11 @@ Font="思源黑体 CN Medium 13"
 Theme=fcitx5-dark-transparent" > ~/.config/fcitx5/conf/classicui.conf
 
 # 安装neovim
-yay -S --noconfirm --needed neovim clipbored-git
-sh ~/dotfiles/deinInstall.sh ~/.cache/dein
+yay -S --noconfirm --needed neovim clipbored-git ripgrep
+git clone https://github.com/NvChad/NvChad ~/.config/nvim
+nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+rm -rf ~/.config/nvim/lua/custom/*
+cp -r ~/dotfiles/.config/nvim/lua/custom/* ~/.config/nvim/lua/custom/
 
 # 安装翻译
 git clone https://github.com/soimort/translate-shell ~/translate-shell
