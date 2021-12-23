@@ -3,14 +3,18 @@
 
 local M = {}
 M.options = {
-  relativenumber = true
+   relativenumber = true
 }
 M.ui = {
-  theme = "uwu",
-  transparency = true
+   theme = "tokyonight",
+   transparency = true
 }
-M.mappings = {}
-M.plugins = {}
+M.mappings = {
+
+}
+M.plugins = {
+
+}
 
 -- NOTE: To use this, make a copy with `cp example_chadrc.lua chadrc.lua`
 
@@ -29,14 +33,17 @@ M.plugins = {}
 
 -- NvChad included plugin options & overrides
 M.plugins = {
+   status = {
+      dashboard = true,
+   },
    options = {
       nvimtree = {
          enable_git = 1,
       },
-      --   lspconfig = {
-      --    path of file containing setups of different lsps (ex : "custom.plugins.lspconfig"), read the docs for more info
-      --    setup_lspconf = "",
-      --   },
+      lspconfig = {
+         --  path of file containing setups of different lsps (ex : "custom.plugins.lspconfig"), read the docs for more info
+         setup_lspconf = "custom.configs.lspconfig",
+      },
    },
    -- To change the Packer `config` of a plugin that comes with NvChad,
    -- add a table entry below matching the plugin github name
