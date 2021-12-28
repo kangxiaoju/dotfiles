@@ -3,7 +3,6 @@
 
 local hooks = require "core.hooks"
 
-
 -- NOTE: To use this, make a copy with `cp example_init.lua init.lua`
 
 --------------------------------------------------------------------
@@ -94,26 +93,10 @@ hooks.add("install_plugins", function(use)
     keys = "<CR>",
   }
 
-  -- 代码格式化
-  -- use {
-  --     "jose-elias-alvarez/null-ls.nvim",
-  --     after = "nvim-lspconfig",
-  --     config = function()
-  --        require("custom.configs.null-ls").setup()
-  --     end,
-  --  }
   use {
     "Chiel92/vim-autoformat",
     cmd = "Autoformat",
   }
-  -- use {
-  --   "mhartington/formatter.nvim",
-  --   opt = true,
-  --   ft = "cpp",
-  --   config = function ()
-  --     require("custom.configs.format")
-  --   end,
-  -- }
 
   -- 快速分析启动时间
   use {

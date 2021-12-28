@@ -19,6 +19,9 @@ M.setup_lsp = function(attach, capabilities)
       "texlab",
       "yamlls",
       "cmake",
+      "dartls",
+      "dockerls",
+      "java_language_server",
    }
 
    for _, lsp in ipairs(servers) do
