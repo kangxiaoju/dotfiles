@@ -43,6 +43,7 @@ local hooks = require "core.hooks"
 
 -- require "custom.plugins.mkdir"
 hooks.add("install_plugins", function(use)
+
   -- 平滑滚动
   use {
     "karb94/neoscroll.nvim",
@@ -81,21 +82,10 @@ hooks.add("install_plugins", function(use)
     keys = "<C-n>",
   }
 
-  -- 增删改引号
-  use {
-    "tpope/vim-surround",
-    keys = {"c", "d"},
-  }
-
   -- 快速选中
   use {
     "gcmt/wildfire.vim",
     keys = "<CR>",
-  }
-
-  use {
-    "Chiel92/vim-autoformat",
-    cmd = "Autoformat",
   }
 
   -- 快速分析启动时间
@@ -130,8 +120,16 @@ hooks.add("install_plugins", function(use)
     ft = "markdown",
   }
 
+  -- 小地图
+  use {
+    "wfxr/minimap.vim",
+    -- run = "cargo install --locked code-minimap",
+    config = function()
+      require("custom.configs.minimap")
+    end,
+  }
+
 end)
 
 -- 按键映射
 require "custom.custom_mappings"
-

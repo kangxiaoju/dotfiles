@@ -6,7 +6,7 @@ M.options = {
    relativenumber = true
 }
 M.ui = {
-   theme = "tokyonight",
+   theme = "monokai",
    transparency = true
 }
 M.mappings = {
@@ -45,6 +45,7 @@ M.plugins = {
          setup_lspconf = "custom.configs.lspconfig",
       },
    },
+
    -- To change the Packer `config` of a plugin that comes with NvChad,
    -- add a table entry below matching the plugin github name
    --              '-' -> '_', remove any '.lua', '.nvim' extensions
