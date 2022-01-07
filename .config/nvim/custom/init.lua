@@ -129,6 +129,12 @@ hooks.add("install_plugins", function(use)
     end,
   }
 
+  -- fcitx5输入法自动切换
+  use {
+    "520Matches/fcitx5.vim",
+    cmd = "Fcitx5",
+  }
+
 end)
 
 -- 按键映射
