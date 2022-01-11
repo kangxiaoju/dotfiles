@@ -108,11 +108,23 @@ Font="思源黑体 CN Medium 13"
 Theme=fcitx5-dark-transparent" > ~/.config/fcitx5/conf/classicui.conf
 
 # 安装neovim
-yay -S --noconfirm --needed neovim clipbored-git ripgrep
+yay -S --noconfirm --needed neovim clipbored-git ripgrep code-minimap lua clang pyright rust-analyzer gopls texlab cmake-language-server dart lua-language-server java-language-server
 git clone https://github.com/NvChad/NvChad ~/.config/nvim
 nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
-rm -rf ~/.config/nvim/lua/custom/*
+rm -rf ~/.config/nvim/examples
 cp -r ~/dotfiles/.config/nvim/lua/custom/* ~/.config/nvim/lua/custom/
+# 语言服务器
+sudo npm install -g vim-language-server
+sudo npm i -g vscode-langservers-extracted
+sudo npm i -g vscode-langservers-extracted
+sudo npm install -g typescript typescript-language-server
+supo npm install -g @volar/server
+sudo npm install -g @tailwindcss/language-server
+yarn global add yaml-language-server
+sudo npm install -g dockerfile-language-server-nodejs
+sudo npm i -g vscode-langservers-extracted
+dart --disable-analytics
+
 
 # 安装翻译
 git clone https://github.com/soimort/translate-shell ~/translate-shell

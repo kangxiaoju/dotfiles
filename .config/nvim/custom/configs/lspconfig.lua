@@ -13,7 +13,7 @@ M.setup_lsp = function(attach, capabilities)
       "html",
       "cssls",
       "tsserver",
-      -- 'jsonls',
+      'jsonls',
       "volar",
       "tailwindcss",
       "texlab",
