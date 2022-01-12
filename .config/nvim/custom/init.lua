@@ -94,12 +94,10 @@ customPlugins.add(function(use)
     end,
   }
 
-  -- fcitx5输入法自动切换
-  use {
-    "520Matches/fcitx5.vim",
-    cmd = "Fcitx5",
-  }
 end)
 
 -- 按键映射
 require "custom.custom_mappings"
+-- fcitx5自动切换输入法 
+require "custom.configs.fcitx5"
+

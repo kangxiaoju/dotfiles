@@ -59,10 +59,3 @@ nmap('<F10>', ':w<CR> | :AsyncTask file-build<CR> | :AsyncTask file-run<CR>')
 
 -- 开启/关闭函数列表
 nmap('<leader>f', ':Vista!!<CR>')
-
--- 替换默认绑定
-local hooks = require "core.hooks"
-
-hooks.add("setup_mappings", function(map)
-    -- map('n', '<A-s>', ':SudaWrite<CR>')
-end)
