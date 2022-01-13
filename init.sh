@@ -116,14 +116,14 @@ cp -r ~/dotfiles/.config/nvim/lua/custom/* ~/.config/nvim/lua/custom/
 # 语言服务器
 sudo npm install -g vim-language-server
 sudo npm i -g vscode-langservers-extracted
-sudo npm i -g vscode-langservers-extracted
+sudo npm i -g neovim 
 sudo npm install -g typescript typescript-language-server
-supo npm install -g @volar/server
+sudo npm install -g @volar/server
 sudo npm install -g @tailwindcss/language-server
 yarn global add yaml-language-server
 sudo npm install -g dockerfile-language-server-nodejs
-sudo npm i -g vscode-langservers-extracted
 dart --disable-analytics
+gem install neovim
 
 
 # 安装翻译
