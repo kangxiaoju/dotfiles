@@ -2,6 +2,10 @@
 -- This file is for NvChad options & tools, custom settings are split between here and 'lua/custom/init.lua'
 
 local M = {}
+local plugin_conf = require "custom.plugins.configs"
+local userPlugins = require "custom.plugins"
+
+
 M.options = {
    relativenumber = true
 }
@@ -42,7 +46,7 @@ M.plugins = {
       },
       lspconfig = {
          --  path of file containing setups of different lsps (ex : "custom.plugins.lspconfig"), read the docs for more info
-         setup_lspconf = "custom.configs.lspconfig",
+         setup_lspconf = "custom.plugins.lspconfig",
       },
    },
 
@@ -53,8 +57,11 @@ M.plugins = {
    --              use "(custom.configs).my_func()" to call a function
    --              use "custom.blankline" to call a file
    default_plugin_config_replace = {
-      dashboard = "custom.configs.dashboard",
+      dashboard = "custom.plugins.dashboard",
+      nvim_treesitter = plugin_conf.treesitter,
+      nvim_tree = plugin_conf.nvimtree,
    },
+   install = userPlugins,
 }
 
 return M
