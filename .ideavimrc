@@ -33,16 +33,44 @@ let mapleader = '\<space>'
 nnoremap <Leader>ff :action Find<CR>
 nnoremap <Leader>fb :action Switcher<CR>
 nnoremap <Leader>fr :action Replace<CR>
-nnoremap <Leader>fw :action ReplaceInPath<CR>
 nnoremap <Leader>fa :action SearchEverywhere<CR>
-nnoremap <Leader>hh :action CallHierarchy<CR>
-nnoremap <Leader>bb :action GotoImplementation<CR>
+nnoremap <Leader>fw :action ReplaceInPath<CR>
 nnoremap <Leader>gp :action Vcs.UpdateProject<CR>
 nnoremap <Leader>gP :action Vcs.Push<CR>
 nnoremap <Leader>gb :action Git.Branches<CR>
-nnoremap ∆ :m .+1<CR>==
-nnoremap ˚ :m .-2<CR>==
-inoremap ∆ <Esc>:m .+1<CR>==gi
-inoremap ˚ <Esc>:m .-2<CR>==gi
-vnoremap ∆ :m '>+1<CR>gv=gv
-vnoremap ˚ :m '<-2<CR>gv=gv<CR>
+
+nnoremap <Leader>ga :action GotoAction<CR>
+nnoremap <Leader>gc :action GotoClass<CR>
+nnoremap <Leader>gd :action GotoDeclaration<CR>
+nnoremap <Leader>gf :action GotoFile<CR>
+nnoremap <Leader>gi :action GotoImplementation<CR>
+nnoremap <Leader>gs :action GotoSymbol<CR>
+nnoremap <Leader>gh :action CallHierarchy<CR>
+
+nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
+nnoremap <Leader>of :action OpenFile<CR>
+nnoremap <Leader>do :action OptimizeImports<CR>
+" 切换目录
+nnoremap <Leader>ow :action ActivateProjectToolWindow<CR>
+" 内容重命名
+nnoremap <Leader>re :action RenameElement<CR>
+" 文件重命名
+nnoremap <Leader>rf :action RenameFile<CR>
+" 格式化代码
+nnoremap <Leader>rc :action ReformatCode<CR>
+
+" 打开文件选项
+nnoremap <Leader>om :action FileMenu<CR>
+" 打开终端
+noremap <Leader>ot :action ActivateTerminalToolWindow<CR>
+" 打开快捷选项
+nnoremap <Leader>os :action SelectIn<CR>
+nnoremap <Leader>bp :action $Paste<CR>
+nnoremap <Leader>bc :action $Copy<CR>
+" 快捷操作
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+vnoremap <C-k> :m '<-2<CR>gv=gv<CR>
+vnoremap <C-j> :m '>+1<CR>gv=gv
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+inoremap <C-j> <Esc>:m .+1<CR>==gi
