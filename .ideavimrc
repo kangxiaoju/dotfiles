@@ -35,6 +35,7 @@ nnoremap <Leader>fb :action Switcher<CR>
 nnoremap <Leader>fr :action Replace<CR>
 nnoremap <Leader>fa :action SearchEverywhere<CR>
 nnoremap <Leader>fw :action ReplaceInPath<CR>
+
 nnoremap <Leader>gp :action Vcs.UpdateProject<CR>
 nnoremap <Leader>gP :action Vcs.Push<CR>
 nnoremap <Leader>gb :action Git.Branches<CR>
@@ -58,6 +59,8 @@ nnoremap <Leader>re :action RenameElement<CR>
 nnoremap <Leader>rf :action RenameFile<CR>
 " 格式化代码
 nnoremap <Leader>rc :action ReformatCode<CR>
+" 新建文件
+nnoremap <Leader>ne :action NewElement<CR>
 
 " 打开文件选项
 nnoremap <Leader>om :action FileMenu<CR>
