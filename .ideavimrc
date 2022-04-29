@@ -30,7 +30,7 @@ set cursorline     "突出显示当前行
 set fdm=marker
 " 快捷键
 let mapleader = '\<space>'
-nnoremap <Leader>ff :action Find<CR>
+nnoremap <Leader>fF :action Find<CR>
 nnoremap <Leader>fb :action Switcher<CR>
 nnoremap <Leader>fr :action Replace<CR>
 nnoremap <Leader>fa :action SearchEverywhere<CR>
@@ -40,13 +40,13 @@ nnoremap <Leader>gp :action Vcs.UpdateProject<CR>
 nnoremap <Leader>gP :action Vcs.Push<CR>
 nnoremap <Leader>gb :action Git.Branches<CR>
 
-nnoremap <Leader>ga :action GotoAction<CR>
-nnoremap <Leader>gc :action GotoClass<CR>
-nnoremap <Leader>gd :action GotoDeclaration<CR>
-nnoremap <Leader>gf :action GotoFile<CR>
-nnoremap <Leader>gi :action GotoImplementation<CR>
-nnoremap <Leader>gs :action GotoSymbol<CR>
-nnoremap <Leader>gh :action CallHierarchy<CR>
+nnoremap <Leader>fA :action GotoAction<CR>
+nnoremap <Leader>fc :action GotoClass<CR>
+nnoremap <Leader>fd :action GotoDeclaration<CR>
+nnoremap <Leader>ff :action GotoFile<CR>
+nnoremap <Leader>fi :action GotoImplementation<CR>
+nnoremap <Leader>fs :action GotoSymbol<CR>
+nnoremap <Leader>fh :action CallHierarchy<CR>
 
 nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
 nnoremap <Leader>of :action OpenFile<CR>
