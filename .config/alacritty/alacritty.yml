@@ -1,0 +1,42 @@
+import:
+  - ~/.config/alacritty/dracula.yml
+
+window:
+  opacity: 0.8
+  title: Alacritty
+  dynamic_title: true
+  class:
+    instance: Alacritty
+    general: Alacritty
+  padding:
+    x: 5 
+    y: 5 
+
+scrolling:
+  history: 10000
+  multiplier: 6
+
+font:
+  normal:
+    family: Hack Nerd Font Mono
+    style: Regular
+  bold:
+    family: Hack Nerd Font Mono
+    style: Bold
+  italic:
+    family: Hack Nerd Font Mono
+    style: Italic.0
+  size: 12
+  builtin_box_drawing: true
+draw_bold_text_with_bright_colors: true
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+shell:
+  program: /bin/zsh
+
+key_bindings:
+  - {key: V, mods: Alt, action: Paste}
+  - {key: C, mods: Alt, action: Copy}
