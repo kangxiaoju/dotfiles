@@ -148,7 +148,7 @@ cmp_config = {
     keyword_length = 1,
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = false,
     native_menu = false,
   },
   formatting = {
@@ -183,6 +183,7 @@ cmp_config = {
     },
     source_names = {
       nvim_lsp = "(LSP)",
+      treesitter = "(TS)",
       emoji = "(Emoji)",
       path = "(Path)",
       calc = "(Calc)",
@@ -244,7 +245,7 @@ cmp_config = {
         cmp.select_next_item()
       elseif luasnip.expandable() then
         luasnip.expand()
-      elseif jumpable() then
+      elseif jumpable(1) then
         luasnip.jump(1)
       elseif check_backspace() then
         fallback()
@@ -270,17 +271,17 @@ cmp_config = {
       "s",
     }),
 
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-p>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping(function(fallback)
       if cmp.visible() and cmp.confirm(cmp_config.confirm_opts) then
-        if jumpable() then
+        if jumpable(1) then
           luasnip.jump(1)
         end
         return
       end
 
-      if jumpable() then
+      if jumpable(1) then
         if not luasnip.jump(1) then
           fallback()
         end
@@ -298,6 +299,13 @@ cmp.setup.cmdline('/', {
   }
 })
 
+cmp.setup.cmdline('?', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
@@ -307,7 +315,6 @@ cmp.setup.cmdline(':', {
     { name = 'path' }
   })
 })
-
 
 -- disable autocompletion for guihua
 vim.cmd("autocmd FileType guihua lua require('cmp').setup.buffer { enabled = false }")

@@ -15,7 +15,7 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_text = true,
+    virtual_text = false,
     -- show signs
     signs = {
       active = signs,
@@ -81,7 +81,7 @@ M.on_attach = function(client, bufnr)
     -- client.resolved_capabilities.document_formatting = false
   -- end
   lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  -- lsp_highlight_document(client)  -- use RRethy/vim-illuminate instead
 
   -- add outline support for evey lanuage
   require("aerial").on_attach(client, bufnr)
@@ -96,5 +96,4 @@ if not status_ok then
 end
 
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-capabilities.offsetEncoding = { "utf-16" }
 return M

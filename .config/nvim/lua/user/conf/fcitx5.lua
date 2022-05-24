@@ -1,4 +1,5 @@
 local M = {}
+
 M.Fcitx5en = function ()
   vim.fn.system("fcitx5-remote -c")
 end

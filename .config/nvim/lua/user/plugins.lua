@@ -75,9 +75,9 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  use "lewis6991/impatient.nvim" -- Speed up loading Lua modules    TODO: figure out how to use this
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
+  use "lewis6991/impatient.nvim" -- Speed up loading Lua modules    TODO: figure out how to use this
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "rcarriga/nvim-notify" -- notify
@@ -105,17 +105,17 @@ return packer.startup(function(use)
   -- Treesittetr
   use {
     "nvim-treesitter/nvim-treesitter",
-    commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
     run = ":TSUpdate",
+    commit = "44b7c8100269161e20d585f24bce322f6dcdf8d2",
   }
   use {
     "nvim-treesitter/nvim-treesitter-textobjects",
     commit = "c81382328ad47c154261d1528d7c921acad5eae5",
   } -- enhance texetobject selection
   use "romgrk/nvim-treesitter-context" -- show class/function at the top
-  -- -- use "m-demare/hlargs.nvim"
-  -- -- use "SmiteshP/nvim-gps" -- statusline shows class structure
-  -- use "andymass/vim-matchup"
+  -- use "m-demare/hlargs.nvim"
+  -- use "SmiteshP/nvim-gps" -- statusline shows class structure
+  use "andymass/vim-matchup"
   -- use {
   --   "abecodes/tabout.nvim",
   --   wants = { 'vim-treesitter' }, -- or require if not used so far
@@ -138,7 +138,7 @@ return packer.startup(function(use)
   -- Editor enhance
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "terrortylor/nvim-comment"
-  -- use "rmagatti/auto-session" -- auto restore session(constains layout, window etc..)
+  use "Shatur/neovim-session-manager"
   -- cmp plugins
   use {
     "hrsh7th/nvim-cmp",
@@ -150,8 +150,11 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
+  -- use "quangnguyen30192/cmp-nvim-tags"
+  use "jsfaint/gen_tags.vim"
+  use "ray-x/cmp-treesitter"
   use "f3fora/cmp-spell" -- spell check
-  -- use "github/copilot.vim"  -- Copilot setup, 
+  -- use "github/copilot.vim"  -- Copilot setup,
   -- use {
   --   "tzachar/cmp-tabnine", -- use ":CmpTabnineHub" command to login
   --   after = "nvim-cmp",
@@ -176,9 +179,9 @@ return packer.startup(function(use)
     branch = "v1", -- optional but strongly recommended
   }
   -- use { "rhysd/accelerated-jk", event = "BufReadPost" }
-  use "famiu/bufdelete.nvim"
+  -- use "famiu/bufdelete.nvim"
 
-  use "nathom/filetype.nvim"
+  -- use "nathom/filetype.nvim"
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -236,26 +239,35 @@ return packer.startup(function(use)
   --   "kevinhwang91/nvim-hlslens", -- highlight search
   --   disable = true,
   -- }
-  -- use "kevinhwang91/nvim-bqf" -- better quick fix, use trouble instead
-  -- use "RRethy/vim-illuminate" -- highlight undercursor word
+  use "kevinhwang91/nvim-bqf" -- better quick fix
+  use "RRethy/vim-illuminate" -- highlight undercursor word
   -- use "lewis6991/spellsitter.nvim" -- spell checker
   use "folke/todo-comments.nvim" -- todo comments
   -- use "liuchengxu/vista.vim"     -- outline
   -- use "simrat39/symbols-outline.nvim" -- outline
   use "stevearc/aerial.nvim"
-  -- use "stevearc/aerial.nvim"
   use "norcalli/nvim-colorizer.lua" -- show color
   use "folke/trouble.nvim"
   use "j-hui/fidget.nvim" -- show lsp progress
   use "sindrets/winshift.nvim" -- rerange window layout
   -- litee family
-  use "ldelossa/litee.nvim"
-  use "ldelossa/litee-calltree.nvim"
+  use { 
+    "ldelossa/litee.nvim",
+    commit = "47235cb807a83af866e06ce654b28efcfe347c60"
+  }
+  use { 
+    "ldelossa/litee-calltree.nvim",
+    commit = "3f3c25e584558949b1eda38ded76eade28fa5fd6"
+  }
 
   -- tools
   -- use "cdelledonne/vim-cmake"
   use "ravenxrz/neovim-cmake"
-  -- use "skanehira/preview-markdown.vim" -- NOTE:: glow required : https://github.com/charmbracelet/glow
+  use {
+    "skanehira/preview-markdown.vim",
+    opt = true,
+    cmd = "PreviewMarkdown",
+  } -- NOTE:: glow required : https://github.com/charmbracelet/glow
   use "voldikss/vim-translator"
   use "mtdl9/vim-log-highlighting"
   use "Pocco81/HighStr.nvim"
@@ -271,8 +283,10 @@ return packer.startup(function(use)
   use { 'michaelb/sniprun', run = 'bash ./install.sh' }
   -- use "ravenxrz/DoxygenToolkit.vim"
   use "Pocco81/AutoSave.nvim"
+  use "djoshea/vim-autoread"
   -- markdown
   use "iamcco/markdown-preview.nvim"
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

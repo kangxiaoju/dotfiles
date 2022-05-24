@@ -27,7 +27,7 @@ local options = {
   cursorline = true,                       -- highlight the current line
   cursorcolumn = false,                    -- cursor column.
   number = true,                           -- set numbered lines
-  relativenumber = true,                  -- set relative numbered lines
+  relativenumber = false,                  -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
@@ -38,9 +38,10 @@ local options = {
   foldexpr = "nvim_treesitter#foldexpr()",
   foldenable = false,                      -- no fold to be applied when open a file
   foldlevel = 99,                          -- if not set this, fold will be everywhere
-  spell = true,                            -- add spell support
+  spell = false,                            -- add spell support
   spelllang = { 'en_us' },                 -- support which languages?
   diffopt="vertical,filler,internal,context:4",                      -- vertical diff split view
+  cscopequickfix="s-,c-,d-,i-,t-,e-",       -- cscope output to quickfix window
 }
 
 vim.opt.shortmess:append "c"

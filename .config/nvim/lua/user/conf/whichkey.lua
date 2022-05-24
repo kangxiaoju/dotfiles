@@ -80,6 +80,7 @@ local opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Welcome" },
+  ["r"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   -- ["b"] = {
   --   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
   --   "Buffers",
@@ -99,6 +100,7 @@ local mappings = {
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   },
   -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+  ["F"] = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw(require('telescope.themes').get_ivy())<cr>", "Find Text" },
   ["s"] = {
     "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>",
     "Find Document Symbols",
@@ -108,6 +110,9 @@ local mappings = {
     -- "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>",
     "Find Symobls",
   },
+  ["p"] = { "<cmd>Telescope projects<cr>", "Projects" },
+
+  ["P"] = { "<cmd>SessionManager load_session<cr>", "Projects" },
 
   ["t"] = {
     "<cmd>UltestSummary<CR>", "Unit Test"
@@ -165,15 +170,7 @@ local mappings = {
     w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics"},
     q = { "<cmd>Trouble quickfix<cr>", "Quick Fix"},
     u = { "<cmd>Trouble lsp_references<cr>", "Usage"},
-  },
-
-  P = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
+    g = { "<cmd>Gitsigns setloclist<cr>", "Open changed hunk" },
   },
 
   -- g = {
@@ -204,7 +201,6 @@ local mappings = {
      S = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Hunk" },
      u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk", },
      U = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk", },
-     t = { "<cmd>Gitsigns setloclist<cr>", "Open changed file" },
      o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
      b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
      c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
@@ -282,16 +278,16 @@ local mappings = {
   },
 
 
-  -- t = {
-  --   name = "Terminal",
-  --   n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-  --   u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-  --   t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-  --   p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-  --   f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-  --   h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-  --   v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-  -- },
+  t = {
+    name = "Terminal",
+    n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
+    u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
+    b = { "<cmd>lua _BTM_TOGGLE()<cr>", "btm" },
+    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+    f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+  },
 }
 
 which_key.setup(setup)

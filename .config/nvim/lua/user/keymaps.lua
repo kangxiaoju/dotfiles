@@ -26,8 +26,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-W>m", ":WinShift<cr>", opts)
 
 -- i j remap to gi gj to get the consistent behaviour in wrap content mode (i.e. set wrap)
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
+-- keymap("n", "j", "<Plug>(accelerated_jk_gj)", opts)
+-- keymap("n", "k", "<Plug>(accelerated_jk_gk)", opts)
 
 
 -- FileExpoler
@@ -40,8 +40,8 @@ keymap("n", "<leader>w", ":w<cr>", opts)
 -- exit cur window
 keymap("n", "<leader>q", ":q<cr>", opts)
 -- delete cur buffer
-keymap("n", "<leader>d", ":Bdelete<cr>", opts)
-keymap("n", "<leader>D", ":Bdelete<cr>", opts)
+keymap("n", "<leader>d", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
+keymap("n", "<leader>D", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
 -- exit whole program
 keymap("n", "ZZ", ":lua require('user.utils').SaveAndExit()<cr>", opts)
 -- remap macro record key
@@ -141,8 +141,7 @@ keymap("n", "K", "<cmd>lua require'dapui'.eval()<cr>", opts)
 
 -- git diff view
 keymap('n', '<leader>j', ']c', opts)
-keymap('n', '<leader>k','[c', opts)
-
+keymap('n', '<leader>k', '[c', opts)
 
 -- unit test
 keymap("n", "<leader>rr", "<cmd>UltestNearest<cr>", opts)
@@ -155,9 +154,14 @@ keymap("n", "gcf", "<cmd>Dox<cr>", opts)
 keymap("n", "<leader>rf", ":%SnipRun<cr>", opts)
 keymap("v", "<leader>rs", ":%SnipRun<cr>", opts)
 
--- for spell check
+-- spell check
 vim.cmd(
 [[
   nnoremap <leader>s :call search('\w\>', 'c')<CR>a<C-X><C-S>
 ]])
 
+-- gtags
+-- find functions calling this function
+keymap("n", "<leader>U", ":lua require('user.utils').GtagsRefernce()<cr>", opts)
+-- find definition
+keymap("n", "<leader>T", ":lua require('user.utils').GtagsText()<cr>", opts)
