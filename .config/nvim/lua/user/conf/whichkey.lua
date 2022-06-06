@@ -99,6 +99,10 @@ local mappings = {
     p = { "<cmd>Telescope projects<cr>", "Projects" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   },
+  b = {
+    name = "Buffer",
+    d = {"<cmd>bp<bar>sp<bar>bn<bar>bd<CR>", "delete buffer"},
+  },
   -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["F"] = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw(require('telescope.themes').get_ivy())<cr>", "Find Text" },
   ["s"] = {
@@ -114,8 +118,8 @@ local mappings = {
 
   ["P"] = { "<cmd>SessionManager load_session<cr>", "Projects" },
 
-  ["t"] = {
-    "<cmd>UltestSummary<CR>", "Unit Test"
+  ["e"] = {
+    "<cmd>NvimTreeToggle<cr><CR>", "TreeToggle"
   },
 
   ["o"] = {
