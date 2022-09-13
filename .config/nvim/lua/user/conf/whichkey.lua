@@ -80,79 +80,79 @@ local opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Welcome" },
-  ["r"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   -- ["b"] = {
   --   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
   --   "Buffers",
   -- },
-  -- ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   -- ["w"] = { "<cmd>w!<CR>", "Save" },
   -- ["q"] = { "<cmd>q!<CR>", "Quit" },
   -- ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
   ["C"] = { "<cmd>%bd|e#<CR>", "Close Other Buffers" },
   -- ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  f = {
-    name = "Find",
-    f = {"<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files"},
+  s = {
+    name = "search",
     b = {"<cmd>lua require('telescope.builtin').buffers()<cr>", "Find buffer"},
-    a = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw(require('telescope.themes').get_ivy())<cr>", "Find Text" },
-    p = { "<cmd>Telescope projects<cr>", "Projects" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    s = {"<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Find Document Symbols"},
+    S = {"<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>", "Find Symobls"},
+    f = {"<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files"},
+    a = {"<cmd>lua require('telescope.builtin').live_grep()<cr>", "Find Text" },
+    p = {"<cmd>Telescope projects<cr>", "Find Projects" },
+    P = {"<cmd>SessionManager load_session<cr>", "session Projects" },
+    r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    -- r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    -- i = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "to fun"}
   },
   b = {
     name = "Buffer",
     d = {"<cmd>bp<bar>sp<bar>bn<bar>bd<CR>", "delete buffer"},
   },
-  -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  ["F"] = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw(require('telescope.themes').get_ivy())<cr>", "Find Text" },
-  ["s"] = {
-    "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>",
-    "Find Document Symbols",
-  },
-  ["S"] = {
-    "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>",
-    -- "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>",
-    "Find Symobls",
-  },
-  ["p"] = { "<cmd>Telescope projects<cr>", "Projects" },
-
-  ["P"] = { "<cmd>SessionManager load_session<cr>", "Projects" },
 
   ["e"] = {
     "<cmd>NvimTreeToggle<cr><CR>", "TreeToggle"
   },
 
-  ["o"] = {
-    "<cmd>AerialToggle<CR>", "Outline"
-  },
-  ["v"] = {
-    "<cmd>lua require('telescope').extensions.neoclip.default(require('telescope.themes').get_ivy())<cr>",
-    "Clipboard Manager"
-  },
-
-  c = {
-    name = "CMake",
-    g = {"<cmd>CMake configure<CR>", "Configure"},
-    t = {"<cmd>CMake select_target<CR>", "SelectTarget"},
-    T = {"<cmd>CMake select_build_type<CR>", "SelectBuildType"},
-    b = {"<cmd>CMake build<CR>", "BuildTarget"},
-    a = {"<cmd>CMake build_all<CR>", "BuildAll"},
-    r = {"<cmd>CMake build_and_run<CR>", "Run"},
-    d = {"<cmd>CMake build_and_debug<CR>", "DebugTarget"},
-    c = {"<cmd>CMake cancel<CR>", "Cancel"},
-    s = {"<cmd>CMake set_target_args<CR>", "SetArg"},
+  o = {
+    name = "open",
+    o = {"<cmd>AerialToggle<CR>", "Outline"},
+    u = {"<cmd>Trouble lsp_references<cr>", "查看代码引用"},
+    i = {"<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "函数调用链"},
+    e = {"<cmd>NvimTreeToggle<cr><CR>", "TreeToggle"},
+    t = { "<cmd>Trouble<cr>", "ToggleTrouble" },
+    d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics"},
+    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics"},
+    q = { "<cmd>Trouble quickfix<cr>", "Quick Fix"},
+    g = { "<cmd>Gitsigns setloclist<cr>", "Open changed hunk" },
   },
 
-  d = {
-    name = "Debug",
-    R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
-    E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
-    X = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
-    -- C = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
-    T = { "<cmd>lua require'dapui'.toggle('sidebar')<cr>", "Toggle Sidebar" },
-    p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
-    r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-    q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
+  -- ["v"] = {
+  --   "<cmd>lua require('telescope').extensions.neoclip.default(require('telescope.themes').get_ivy())<cr>",
+  --   "Clipboard Manager"
+  -- },
+
+  -- c = {
+  --   name = "CMake",
+  --   g = {"<cmd>CMake configure<CR>", "Configure"},
+  --   t = {"<cmd>CMake select_target<CR>", "SelectTarget"},
+  --   T = {"<cmd>CMake select_build_type<CR>", "SelectBuildType"},
+  --   b = {"<cmd>CMake build<CR>", "BuildTarget"},
+  --   a = {"<cmd>CMake build_all<CR>", "BuildAll"},
+  --   r = {"<cmd>CMake build_and_run<CR>", "Run"},
+  --   d = {"<cmd>CMake build_and_debug<CR>", "DebugTarget"},
+  --   c = {"<cmd>CMake cancel<CR>", "Cancel"},
+  --   s = {"<cmd>CMake set_target_args<CR>", "SetArg"},
+  -- },
+
+  -- d = {
+  --   name = "Debug",
+  --   R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
+  --   E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
+  --   X = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
+  --   -- C = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
+  --   T = { "<cmd>lua require'dapui'.toggle('sidebar')<cr>", "Toggle Sidebar" },
+  --   p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
+  --   r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+  --   q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
 
     -- b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
     -- c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
@@ -165,17 +165,17 @@ local mappings = {
     -- o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
     -- t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
     -- u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-  },
+  -- },
 
-  T = {
-    name = "Trouble",
-    t = { "<cmd>Trouble<cr>", "ToggleTrouble" },
-    d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics"},
-    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics"},
-    q = { "<cmd>Trouble quickfix<cr>", "Quick Fix"},
-    u = { "<cmd>Trouble lsp_references<cr>", "Usage"},
-    g = { "<cmd>Gitsigns setloclist<cr>", "Open changed hunk" },
-  },
+  -- T = {
+  --   name = "Trouble",
+  --   t = { "<cmd>Trouble<cr>", "ToggleTrouble" },
+  --   d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics"},
+  --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics"},
+  --   q = { "<cmd>Trouble quickfix<cr>", "Quick Fix"},
+  --   u = { "<cmd>Trouble lsp_references<cr>", "Usage"},
+  --   g = { "<cmd>Gitsigns setloclist<cr>", "Open changed hunk" },
+  -- },
 
   -- g = {
   --   name = "Git",
