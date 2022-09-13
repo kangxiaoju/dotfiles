@@ -5,9 +5,9 @@ nnoremap <Leader>pm :action ManageRecentProjects<CR>
 vnoremap <Leader>pm <Esc>:action ManageRecentProjects<CR>
 
 
-let g:WhichKeyDesc_p_e = "<leader>pe 切换目录"
-nnoremap <leader>pe :action ActivateProjectToolWindow<CR>
-vnoremap <leader>pe <Esc>action ActivateProjectToolWindow<CR>
+let g:WhichKeyDesc_c_h = "<C-h> 切换目录"
+nnoremap <C-h> :action ActivateProjectToolWindow<CR>
+vnoremap <C-h> <Esc>action ActivateProjectToolWindow<CR>
 
 let g:WhichKeyDesc_p_b = "<leader>pb    项目build"
 nnoremap <Leader>pb :action CompileDirty<CR>
