@@ -209,17 +209,6 @@ if is_available "toggleterm.nvim" then
   maps.t["<C-'>"] = maps.n["<F7>"]
 end
 
--- Terminal
-if is_available "trouble.nvim" then
-  maps.n["<leader>xx"] = { "<cmd>TroubleToggle<cr>", desc = "TroubleToggle" }
-  maps.n["<leader>xd"] = { "<cmd>TroubleToggle lsp_definitions<cr>", desc = "TroubleToggle lsp_definitions" }
-  maps.n["<leader>xr"] = { "<cmd>TroubleToggle lsp_references<cr>", desc = "TroubleToggle lsp_references" }
-  maps.n["<leader>xD"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "TroubleToggle document_diagnostics" }
-  maps.n["<leader>xD"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "TroubleToggle document_diagnostics" }
-  maps.n["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "TroubleToggle quickfix" }
-  maps.n["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", desc = "TroubleToggle loclist" }
-end
-
 -- Stay in indent mode
 maps.v["<"] = { "<gv", desc = "unindent line" }
 maps.v[">"] = { ">gv", desc = "indent line" }
@@ -245,6 +234,29 @@ end
 if is_available "nvim-colorizer.lua" then
   maps.n["<leader>uC"] = { "<cmd>ColorizerToggle<cr>", desc = "Toggle color highlight" }
 end
+
+if is_available "hop.nvim" then
+  maps.n["f"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+    desc = "hop.hint.after" }
+
+  maps.n["<S-f>"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+    desc = "hop.hint.before" }
+
+  maps.v["f"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+    desc = "hop.hint.v.after" }
+
+  maps.v["<S-f>"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+    desc = "hop.hint.v.before" }
+  maps.n["<leader><leader>w"] = { "<cmd>HopWord<cr>", desc = "hop.word" }
+  maps.n["<leader><leader>j"] = { "<cmd>HopLine<cr>", desc = "hop.line" }
+  maps.n["<leader><leader>k"] = { "<cmd>HopLine<cr>", desc = "hop.line" }
+  maps.n["<leader><leader>s"] = { "<cmd>HopLineStart<cr>", desc = "hop.line.start" }
+  maps.n["<leader><leader>c"] = { "<cmd>HopChar1<cr>", desc = "hop.char1" }
+  maps.n["<leader><leader>C"] = { "<cmd>HopChar2<cr>", desc = "hop.char2" }
+  maps.n["<leader><leader>a"] = { "<cmd>HopAnywhere<cr>", desc = "hop.any.where" }
+
+end
+
 maps.n["<leader>uS"] = { function() astronvim.ui.toggle_conceal() end, desc = "Toggle conceal" }
 maps.n["<leader>ud"] = { function() astronvim.ui.toggle_diagnostics() end, desc = "Toggle diagnostics" }
 maps.n["<leader>ug"] = { function() astronvim.ui.toggle_signcolumn() end, desc = "Toggle signcolumn" }

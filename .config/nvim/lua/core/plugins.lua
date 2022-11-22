@@ -183,9 +183,6 @@ local astro_plugins = {
   -- Color highlighting
   ["NvChad/nvim-colorizer.lua"] = { event = on_file_open, config = function() require "configs.colorizer" end },
 
-  -- Trouble
-  ["folke/trouble.nvim"] = { module = "trouble", config = function() require "configs.trouble" end },
-
   -- Autopairs
   ["windwp/nvim-autopairs"] = { event = "InsertEnter", config = function() require "configs.autopairs" end },
 
@@ -228,6 +225,11 @@ local astro_plugins = {
     event = "BufWritePost",
     config = function() require "configs.session_manager" end,
   },
+
+  -- 文件跳转
+  ["phaazon/hop.nvim"] = { module = "hop", branch = "v2",
+    config = function() require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' } end },
+
 }
 
 if astronvim.updater.snapshot then
