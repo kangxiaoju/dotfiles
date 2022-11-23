@@ -8,7 +8,6 @@ for _, source in ipairs {
   "core.diagnostics",
   "core.autocmds",
   "core.mappings",
-  "core.neovide",
   "configs.which-key-register",
 } do
   local status_ok, fault = pcall(require, source)

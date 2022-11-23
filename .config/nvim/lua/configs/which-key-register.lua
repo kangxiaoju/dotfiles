@@ -16,7 +16,6 @@ local extra_sections = {
   s = "Search",
   S = "Session",
   t = "Terminal",
-  x = "Trouble",
 }
 
 local function init_table(mode, prefix, idx)

@@ -88,7 +88,7 @@ if is_available "neovim-session-manager" then
   maps.n["<leader>Sd"] = { "<cmd>SessionManager! delete_session<cr>", desc = "Delete session" }
   maps.n["<leader>Sf"] = { "<cmd>SessionManager! load_session<cr>", desc = "Search sessions" }
   maps.n["<leader>S."] =
-  { "<cmd>SessionManager! load_current_dir_session<cr>", desc = "Load current directory session" }
+    { "<cmd>SessionManager! load_current_dir_session<cr>", desc = "Load current directory session" }
 end
 
 -- Package Manager
@@ -153,7 +153,7 @@ if is_available "telescope.nvim" then
   maps.n["<leader>fm"] = { function() require("telescope.builtin").marks() end, desc = "Search marks" }
   maps.n["<leader>fo"] = { function() require("telescope.builtin").oldfiles() end, desc = "Search history" }
   maps.n["<leader>fc"] =
-  { function() require("telescope.builtin").grep_string() end, desc = "Search for word under cursor" }
+    { function() require("telescope.builtin").grep_string() end, desc = "Search for word under cursor" }
   maps.n["<leader>sb"] = { function() require("telescope.builtin").git_branches() end, desc = "Git branches" }
   maps.n["<leader>sh"] = { function() require("telescope.builtin").help_tags() end, desc = "Search help" }
   maps.n["<leader>sm"] = { function() require("telescope.builtin").man_pages() end, desc = "Search man" }
@@ -162,7 +162,7 @@ if is_available "telescope.nvim" then
   maps.n["<leader>sc"] = { function() require("telescope.builtin").commands() end, desc = "Search commands" }
   if astronvim.is_available "nvim-notify" then
     maps.n["<leader>sn"] =
-    { function() require("telescope").extensions.notify.notify() end, desc = "Search notifications" }
+      { function() require("telescope").extensions.notify.notify() end, desc = "Search notifications" }
   end
   maps.n["<leader>ls"] = {
     function()
@@ -176,7 +176,7 @@ if is_available "telescope.nvim" then
     desc = "Search symbols",
   }
   maps.n["<leader>lG"] =
-  { function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "Search workspace symbols" }
+    { function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "Search workspace symbols" }
   maps.n["<leader>lR"] = { function() require("telescope.builtin").lsp_references() end, desc = "Search references" }
   maps.n["<leader>lD"] = { function() require("telescope.builtin").diagnostics() end, desc = "Search diagnostics" }
 end
@@ -219,10 +219,6 @@ maps.t["<C-j>"] = { "<c-\\><c-n><c-w>j", desc = "Terminal down window navigation
 maps.t["<C-k>"] = { "<c-\\><c-n><c-w>k", desc = "Terminal up window navigation" }
 maps.t["<C-l>"] = { "<c-\\><c-n><c-w>l", desc = "Terminal right window navigation" }
 
--- lsp.bug.code_action
-maps.t["<C-l>"] = { "<c-\\><c-n><c-w>l", desc = "Terminal right window navigation" }
-maps.n["<A-cr>"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "code_action" }
-
 -- Custom menu for modification of the user experience
 if is_available "nvim-autopairs" then
   maps.n["<leader>ua"] = { function() astronvim.ui.toggle_autopairs() end, desc = "Toggle autopairs" }
@@ -234,29 +230,6 @@ end
 if is_available "nvim-colorizer.lua" then
   maps.n["<leader>uC"] = { "<cmd>ColorizerToggle<cr>", desc = "Toggle color highlight" }
 end
-
-if is_available "hop.nvim" then
-  maps.n["f"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
-    desc = "hop.hint.after" }
-
-  maps.n["<S-f>"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
-    desc = "hop.hint.before" }
-
-  maps.v["f"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
-    desc = "hop.hint.v.after" }
-
-  maps.v["<S-f>"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
-    desc = "hop.hint.v.before" }
-  maps.n["<leader><leader>w"] = { "<cmd>HopWord<cr>", desc = "hop.word" }
-  maps.n["<leader><leader>j"] = { "<cmd>HopLine<cr>", desc = "hop.line" }
-  maps.n["<leader><leader>k"] = { "<cmd>HopLine<cr>", desc = "hop.line" }
-  maps.n["<leader><leader>s"] = { "<cmd>HopLineStart<cr>", desc = "hop.line.start" }
-  maps.n["<leader><leader>c"] = { "<cmd>HopChar1<cr>", desc = "hop.char1" }
-  maps.n["<leader><leader>C"] = { "<cmd>HopChar2<cr>", desc = "hop.char2" }
-  maps.n["<leader><leader>a"] = { "<cmd>HopAnywhere<cr>", desc = "hop.any.where" }
-
-end
-
 maps.n["<leader>uS"] = { function() astronvim.ui.toggle_conceal() end, desc = "Toggle conceal" }
 maps.n["<leader>ud"] = { function() astronvim.ui.toggle_diagnostics() end, desc = "Toggle diagnostics" }
 maps.n["<leader>ug"] = { function() astronvim.ui.toggle_signcolumn() end, desc = "Toggle signcolumn" }

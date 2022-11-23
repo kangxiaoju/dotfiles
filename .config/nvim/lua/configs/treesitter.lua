@@ -1,5 +1,4 @@
 require("nvim-treesitter.configs").setup(astronvim.user_plugin_opts("plugins.treesitter", {
-  ensure_installed = { "cpp", "c", "python", "go", "rust", "json", "yaml", "html", "vue", "typescript", "sql", "java", "scss", "toml", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
