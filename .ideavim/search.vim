@@ -1,33 +1,33 @@
-let g:WhichKeyDesc_Buffer = "<leader>s   搜索"
+let g:WhichKeyDesc_Buffer = "<leader>f   搜索"
 
-let g:WhichKeyDesc_s_a = "<leader>se   搜索所有"
-nnoremap <Leader>sa :action SearchEverywhere<CR>
-vnoremap <Leader>sa <Esc>:action SearchEverywhere<CR>
+let g:WhichKeyDesc_f_w = "<leader>fw   搜索所有"
+nnoremap <Leader>fw :action SearchEverywhere<CR>
+vnoremap <Leader>fw <Esc>:action SearchEverywhere<CR>
 
-let g:WhichKeyDesc_s_r = "<leader>sr   全局替换"
-nnoremap <Leader>sr :action ReplaceInPath<CR>
-vnoremap <Leader>sr <Esc>:action ReplaceInPath<CR>
+let g:WhichKeyDesc_f_r = "<leader>fr   全局替换"
+nnoremap <Leader>fr :action ReplaceInPath<CR>
+vnoremap <Leader>fr <Esc>:action ReplaceInPath<CR>
 
-let g:WhichKeyDesc_s_F = "<leader>sa   全局搜索"
-nnoremap <Leader>sF :action FindInPath<CR>
-vnoremap <Leader>sF <Esc>:action FindInPath<CR>
+let g:WhichKeyDesc_f_F = "<leader>fa   全局搜索"
+nnoremap <Leader>fF :action FindInPath<CR>
+vnoremap <Leader>fF <Esc>:action FindInPath<CR>
 
-let g:WhichKeyDesc_s_A = "<leader>sA   搜索Action"
-nnoremap <Leader>sA :action GotoAction<CR>
-vnoremap <Leader>sA <Esc>:action GotoAction<CR>
+let g:WhichKeyDesc_f_A = "<leader>fA   搜索Action"
+nnoremap <Leader>fA :action GotoAction<CR>
+vnoremap <Leader>fA <Esc>:action GotoAction<CR>
 
-let g:WhichKeyDesc_s_c = "<leader>sc   搜索Class"
-nnoremap <Leader>sc :action GotoClass<CR>
-vnoremap <Leader>sc <Esc>:action GotoClass<CR>
+let g:WhichKeyDesc_f_c = "<leader>fc   搜索Class"
+nnoremap <Leader>fc :action GotoClass<CR>
+vnoremap <Leader>fc <Esc>:action GotoClass<CR>
 
-let g:WhichKeyDesc_s_f = "<leader>sf   搜索文件"
-nnoremap <Leader>sf :action GotoFile<CR>
-vnoremap <Leader>sf <Esc>:action GotoFile<CR>
+let g:WhichKeyDesc_f_f = "<leader>ff   搜索文件"
+nnoremap <Leader>ff :action GotoFile<CR>
+vnoremap <Leader>ff <Esc>:action GotoFile<CR>
 
-let g:WhichKeyDesc_s_h = "<leader>sh   搜索方法调用"
-nnoremap <Leader>sh :action CallHierarchy<CR>
-vnoremap <Leader>sh <Esc>:action CallHierarchy<CR>
+let g:WhichKeyDesc_f_s = "<leader>fs   搜索Symbol"
+nnoremap <Leader>fs :action GotoSymbol<CR>
+vnoremap <Leader>fs <Esc>:action GotoSymbol<CR>
 
-let g:WhichKeyDesc_s_s = "<leader>ss   搜索Symbol"
-nnoremap <Leader>ss :action GotoSymbol<CR>
-vnoremap <Leader>ss <Esc>:action GotoSymbol<CR>
+let g:WhichKeyDesc_f_b = "<leader>fb   缓冲区搜索"
+nnoremap <Leader>fb :action Switcher<CR>
+vnoremap <Leader>fb <Esc>:action Switcher<CR>
