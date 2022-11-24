@@ -26,7 +26,7 @@ local config = {
         },
 
         -- Set colorscheme to use
-        colorscheme = "default_theme",
+        colorscheme = "catppuccin",
 
         -- Add highlight groups in any theme
         highlights = {
@@ -46,7 +46,7 @@ local config = {
                         number = true, -- sets vim.opt.number
                         spell = false, -- sets vim.opt.spell
                         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-                        wrap = false, -- sets vim.opt.wrap
+                        wrap = true, -- sets vim.opt.wrap
                 },
                 g = {
                         mapleader = " ", -- sets vim.g.mapleader
@@ -57,6 +57,8 @@ local config = {
                         status_diagnostics_enabled = true, -- enable diagnostics in statusline
                         icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
                         ui_notifications_enabled = true, -- disable notifications when toggling UI elements
+                        neovide_transparency = 0.8,
+                        neovide_cursor_vfx_mode = "sonicboom",
                 },
         },
         -- If you need more control, you can use the function()...end notation
@@ -70,19 +72,38 @@ local config = {
         -- end,
 
         -- Set dashboard header
+        --
         header = {
-                " █████  ███████ ████████ ██████   ██████",
-                "██   ██ ██         ██    ██   ██ ██    ██",
-                "███████ ███████    ██    ██████  ██    ██",
-                "██   ██      ██    ██    ██   ██ ██    ██",
-                "██   ██ ███████    ██    ██   ██  ██████",
-                " ",
-                "    ███    ██ ██    ██ ██ ███    ███",
-                "    ████   ██ ██    ██ ██ ████  ████",
-                "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-                "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-                "    ██   ████   ████   ██ ██      ██",
+                '',
+                '⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕',
+                '⢐⢕⢕⢕⢕⢕⣕⢕⢕⠕⠁⢕⢕⢕⢕⢕⢕⢕⢕⠅⡄⢕⢕⢕⢕⢕⢕⢕⢕⢕',
+                '⢕⢕⢕⢕⢕⠅⢗⢕⠕⣠⠄⣗⢕⢕⠕⢕⢕⢕⠕⢠⣿⠐⢕⢕⢕⠑⢕⢕⠵⢕',
+                '⢕⢕⢕⢕⠁⢜⠕⢁⣴⣿⡇⢓⢕⢵⢐⢕⢕⠕⢁⣾⢿⣧⠑⢕⢕⠄⢑⢕⠅⢕',
+                '⢕⢕⠵⢁⠔⢁⣤⣤⣶⣶⣶⡐⣕⢽⠐⢕⠕⣡⣾⣶⣶⣶⣤⡁⢓⢕⠄⢑⢅⢑',
+                '⠍⣧⠄⣶⣾⣿⣿⣿⣿⣿⣿⣷⣔⢕⢄⢡⣾⣿⣿⣿⣿⣿⣿⣿⣦⡑⢕⢤⠱⢐',
+                '⢠⢕⠅⣾⣿⠋⢿⣿⣿⣿⠉⣿⣿⣷⣦⣶⣽⣿⣿⠈⣿⣿⣿⣿⠏⢹⣷⣷⡅⢐',
+                '⣔⢕⢥⢻⣿⡀⠈⠛⠛⠁⢠⣿⣿⣿⣿⣿⣿⣿⣿⡀⠈⠛⠛⠁⠄⣼⣿⣿⡇⢔',
+                '⢕⢕⢽⢸⢟⢟⢖⢖⢤⣶⡟⢻⣿⡿⠻⣿⣿⡟⢀⣿⣦⢤⢤⢔⢞⢿⢿⣿⠁⢕',
+                '⢕⢕⠅⣐⢕⢕⢕⢕⢕⣿⣿⡄⠛⢀⣦⠈⠛⢁⣼⣿⢗⢕⢕⢕⢕⢕⢕⡏⣘⢕',
+                '⢕⢕⠅⢓⣕⣕⣕⣕⣵⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣷⣕⢕⢕⢕⢕⡵⢀⢕⢕',
+                '⢑⢕⠃⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⢕⢕⢕',
+                '⣆⢕⠄⢱⣄⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢁⢕⢕⠕⢁',
+                '⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿',
+                '',
         },
+        -- header = {
+        --         " █████  ███████ ████████ ██████   ██████",
+        --         "██   ██ ██         ██    ██   ██ ██    ██",
+        --         "███████ ███████    ██    ██████  ██    ██",
+        --         "██   ██      ██    ██    ██   ██ ██    ██",
+        --         "██   ██ ███████    ██    ██   ██  ██████",
+        --         " ",
+        --         "    ███    ██ ██    ██ ██ ███    ███",
+        --         "    ████   ██ ██    ██ ██ ████  ████",
+        --         "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
+        --         "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
+        --         "    ██   ████   ████   ██ ██      ██",
+        -- },
 
         -- Default theme configuration
         default_theme = {
@@ -112,7 +133,7 @@ local config = {
                         cmp = true,
                         dashboard = true,
                         highlighturl = true,
-                        hop = false,
+                        hop = true,
                         indent_blankline = true,
                         lightspeed = false,
                         ["neo-tree"] = true,
@@ -205,18 +226,52 @@ local config = {
                         ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
                         ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
                         ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+                        ["f"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+                                desc = "hop.hint.after" },
+                        ["<S-f>"] = { "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+                                desc = "hop.hint.before" },
+                        ["<leader><leader>w"] = { "<cmd>HopWord<cr>", desc = "hop.word" },
+                        ["<leader><leader>j"] = { "<cmd>HopLine<cr>", desc = "hop.line" },
+                        ["<leader><leader>k"] = { "<cmd>HopLine<cr>", desc = "hop.line" },
+                        ["<leader><leader>s"] = { "<cmd>HopLineStart<cr>", desc = "hop.line.start" },
+                        ["<leader><leader>c"] = { "<cmd>HopChar1<cr>", desc = "hop.char1" },
+                        ["<leader><leader>C"] = { "<cmd>HopChar2<cr>", desc = "hop.char2" },
+                        ["<leader><leader>a"] = { "<cmd>HopAnywhere<cr>", desc = "hop.any.where" },
                         -- quick save
                         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
                 },
                 t = {
                         -- setting a mapping to false will disable it
                         -- ["<esc>"] = false,
+                        --
                 },
+
         },
 
         -- Configure plugins
         plugins = {
                 init = {
+                        {
+                                "catppuccin/nvim",
+                                as = "catppuccin",
+                                config = function()
+                                        require("catppuccin").setup {}
+                                end,
+                        },
+                        {
+                                'phaazon/hop.nvim',
+                                branch = 'v2', -- optional but strongly recommended
+                                config = function()
+                                        -- you can configure Hop the way you like here; see :h hop-config
+                                        require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+                                end
+                        },
+                        {
+                                'keaising/im-select.nvim',
+                                config = function()
+                                        require('im_select').setup()
+                                end
+                        }
                         -- You can disable default plugins as follows:
                         -- ["goolord/alpha-nvim"] = { disable = true },
 
@@ -256,6 +311,8 @@ local config = {
                 end,
                 treesitter = { -- overrides `require("treesitter").setup(...)`
                         -- ensure_installed = { "lua" },
+                        ensure_installed = { "cpp", "c", "python", "go", "rust", "json", "yaml", "html", "vue",
+                                "typescript", "sql", "java", "scss", "toml", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
                 },
                 -- use mason-lspconfig to configure LSP installations
                 ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
