@@ -1,16 +1,16 @@
 let g:WhichKeyDesc_Buffer = "<leader>f   搜索"
 
-let g:WhichKeyDesc_f_w = "<leader>fw   搜索所有"
-nnoremap <Leader>fw :action SearchEverywhere<CR>
-vnoremap <Leader>fw <Esc>:action SearchEverywhere<CR>
+let g:WhichKeyDesc_f_a = "<leader>fa   搜索所有"
+nnoremap <Leader>fa :action SearchEverywhere<CR>
+vnoremap <Leader>fa <Esc>:action SearchEverywhere<CR>
 
 let g:WhichKeyDesc_f_r = "<leader>fr   全局替换"
 nnoremap <Leader>fr :action ReplaceInPath<CR>
 vnoremap <Leader>fr <Esc>:action ReplaceInPath<CR>
 
-let g:WhichKeyDesc_f_F = "<leader>fa   全局搜索"
-nnoremap <Leader>fF :action FindInPath<CR>
-vnoremap <Leader>fF <Esc>:action FindInPath<CR>
+let g:WhichKeyDesc_f_w = "<leader>fw   全局搜索"
+nnoremap <Leader>fw :action FindInPath<CR>
+vnoremap <Leader>fw <Esc>:action FindInPath<CR>
 
 let g:WhichKeyDesc_f_A = "<leader>fA   搜索Action"
 nnoremap <Leader>fA :action GotoAction<CR>
