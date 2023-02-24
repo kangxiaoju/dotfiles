@@ -1,0 +1,192 @@
+{
+    "hyprland/window": {
+        "format": "{}",
+    },
+    "layer": "top",
+    "position": "top",
+    "modules-left": [
+        "custom/launcher",
+        "wlr/workspaces",
+        "custom/song"
+    ],
+    "modules-center": [
+        "custom/cava-internal"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "temperature",
+        "backlight",
+        "custom/weather",
+        "memory",
+        "cpu",
+        "network",
+        "battery",
+        "custom/isDay",
+        "clock",
+        "tray"
+    ],
+    "wlr/workspaces": {
+      "format": "{icon}",
+      "disable-scroll": true,
+      "all-outputs": true,
+      "on-click": "activate",
+      "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+      },
+      "sort-by-number": true
+    },
+    "custom/launcher": {
+        "format": " ",
+        "on-click": "pkill rofi || rofi -show drun",
+        "tooltip": false
+    },
+    "custom/cava-internal": {
+        "exec": "sleep 1s && /home/kael/.config/waybar/Cava-internal.sh",
+        "tooltip": true
+    },
+    "custom/weather": {
+        "exec": "/home/kael/.config/waybar/weather.sh && sleep 3s",
+        "tooltip": true
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": true
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "on-scroll-up": "light -A 5",
+        "on-scroll-down": "light -U 5",
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{icon} {volume}%",
+        "format-muted": "婢 Muted",
+        "format-bluetooth": "{volume}% {icon}   {format_source}",
+        "format-bluetooth-muted": " {icon}   {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "states": {
+            "warning": 85
+        },
+        "on-click": "pkill rofi || ~/.config/rofi/rofi-bluetooth.sh",
+        "tooltip": false
+    },
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "tooltip": false
+    },
+    "clock": {
+        "on-click": "wallpaper_random",
+        "on-click-right": "killall dynamic_wallpaper || dynamic_wallpaper &",
+        "interval": 1,
+        "format": "{:%H:%M:%S}",
+        "tooltip": true,
+        "tooltip-format": "上午：高数\n下午：Ps\n晚上：Golang\n<tt>{calendar}</tt>"
+    },
+    "memory": {
+        "interval": 1,
+        "format": "﬙ {percentage}%",
+        "states": {
+            "warning": 85
+        }
+    },
+    "cpu": {
+        "interval": 1,
+        "format": " {usage}%"
+    },
+    "mpd": {
+        "max-length": 25,
+        "format": " {title}",
+        "format-paused": " {title}",
+        "format-stopped": "",
+        "format-disconnected": "",
+        "on-click": "mpc --quiet toggle",
+        "on-click-right": "mpc ls | mpc add",
+        "on-click-middle": "kitty --class:'ncmpcpp' ncmpcpp ",
+        "on-scroll-up": "mpc --quiet prev",
+        "on-scroll-down": "mpc --quiet next",
+        "smooth-scrolling-threshold": 5,
+        "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})"
+    },
+    "network": {
+        "interval": 1,
+        "format-wifi": "說 {essid}",
+        "format-ethernet": " {ifname}",
+        "format-linked": "說 {essid} (No IP)",
+        "format-disconnected": "說 Disconnected",
+        "tooltip": true,
+        "on-click": "pkill rofi || ~/.config/rofi/rofi-wifi.sh"
+    },
+    "temperature": {
+        "tooltip": false,
+        "format": " {temperatureC}°C"
+    },
+    "custom/isDay": {
+        "exec": "sleep 1s && /home/kael/.config/waybar/isDay.sh",
+        "tooltip": true
+    },
+    "custom/powermenu": {
+        "format": "",
+        "on-click": "pkill rofi || ~/.config/rofi/powermenu.sh",
+        "tooltip": false
+    },
+    "custom/song": {
+        "exec": "sleep 1s && /home/kael/.config/waybar/song.sh",
+        "tooltip": true
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 5
+    }
+}
