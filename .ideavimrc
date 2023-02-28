@@ -1,0 +1,63 @@
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+Plug 'easymotion/vim-easymotion'
+" 快速注解gcc
+set commentary
+"语法高亮
+syntax on
+"显示行号
+set number relativenumber
+" 启用which-key
+set which-key
+set notimeout
+set timeoutlen=5000
+"显示光标所在位置的行号和列号
+set ruler
+set wrap                      "自动折行
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set expandtab                  "将tab替换为相应数量空格
+set smartindent
+set backspace=2
+set co=5
+" paste之后不会把yank的内容替换掉
+vmap p "_dp
+"设置取消备份 禁止临时文件生成
+set nobackup
+set noswapfile
+" 为IdeaVim插件增加自动切换为英文输入法的功能,g
+" idea 需要安装 IdeaVimExtension plugin
+set keep-english-in-normal
+"设置匹配模式 类似当输入一个左括号时会匹配相应的那个右括号
+set showmatch
+set argt
+set clipboard^=unnamed,unnamedplus
+"set laststatus=2   "命令行为两行
+"set fenc=utf-8     "文件编码
+"set mouse=a        "启用鼠标
+set ignorecase     "忽略大小写
+set cursorline     "突出显示当前行
+set cursorcolumn   "突出显示当前列
+set fdm=marker
+" 快捷键
+let mapleader = " "
+
+" 刷新idea
+let g:WhichKeyDesc_reloadIdeavimrc = "<leader>r 刷新ideavimrc"
+nnoremap <leader>r    :source ~/.ideavimrc<CR>
+vnoremap <leader>r    <Esc>:source ~/.ideavimrc<CR>
+
+let g:WhichKeyDesc_help = "<leader>? help"
+nnoremap <leader>?    :map<CR>
+vnoremap <leader>?    <Esc>:map<CR>
+
+" 快捷操作
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+vnoremap <C-k> :m '<-2<CR>gv=gv<CR>
+vnoremap <C-j> :m '>+1<CR>gv=gv
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+
+source /Users/kael/.ideavim/init.vim
