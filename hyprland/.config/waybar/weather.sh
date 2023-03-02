@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #status=$(curl -s 'http://wttr.in/shanghai?format=%C+|+%t')
-API_KEY="cea98014eda44ccaa9612859221908" # insert api key here
+#API_KEY="" # insert api key here
 CITY="shanghai" # insert city here
 # first comment is description, second is icon number
 weather_icons_day=(
