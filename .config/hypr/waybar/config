@@ -1,41 +1,44 @@
 {
-  "include": "~/.config/hypr/waybar/modules",
-  "layer": "top",
-  //"mode": "dock",
-  "exclusive": true,
-  "passthrough": false,
-  "position": "top",
-  "spacing": 3,
-  "fixed-center": true,
-  "ipc": true,
-  "margin-left": 2,
-  "margin-right": 2,
 
-  "modules-left": [
-		"custom/menu", 
-		"wlr/workspaces", 
-    "custom/cava-internal",
-    "custom/song",
+"include": "~/.config/hypr/waybar/modules",
+"layer": "top",
+//"mode": "dock",
+"exclusive": true,
+"passthrough": false,
+"position": "top",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+"margin-top": 6,
+"margin-left": 8,
+"margin-right": 8,
+
+"modules-left": [
+	"custom/menu", 
+	"wlr/workspaces", 
+	"custom/weather",
+	"custom/cava",
+	"custom/song-status",
+	"custom/song-title",
+	"custom/song-post",
+	"custom/song",
 	],
   
-  "modules-center": [
-		"clock#3", 
-		"custom/lock_screen"
+"modules-center": [
 	], 
 
-  "modules-right": [
-		"hyprland/window",
-		"cpu", 
-		"temperature", 
-		"memory", 
-		"tray", 
-		"custom/weather",
-    "custom/isDay",
-		"battery", 
-		"backlight",
-		"pulseaudio",
-		//"wireplumber", 
-		"pulseaudio#microphone", 
-		"custom/power"
+"modules-right": [
+	"temperature", 
+	"memory",
+	"disk", 
+	"cpu", 
+	"battery", 
+	"backlight",
+	"pulseaudio",
+	"pulseaudio#microphone",
+	"tray", 
+	"clock",
+	"custom/lock",	
+	"custom/power",
 	],
 }

@@ -1,17 +1,22 @@
-## Wofi Config
+## Wofi Config - Plasma
 
 ## General
+mode=drun,run
+run-always_parse_args=true
 show=drun
 prompt=Apps
-normal_window=true
+#normal_window=true
 layer=overlay
 term=foot
-columns=2
+columns=1
+lines=15
 
 ## Geometry
-width=30%
-height=30%
+height=20%
+width=12%
 location=top_left
+xoffset=4
+yoffset=10
 orientation=vertical
 halign=fill
 line_wrap=off
@@ -29,7 +34,7 @@ parse_search=false
 insensitive=false
 
 ## Other
-hide_scroll=true
+hide_scroll=false
 no_actions=true
 sort_order=default
 gtk_dark=true
@@ -38,3 +43,4 @@ filter_rate=100
 ## Keys
 key_expand=Tab
 key_exit=Escape
+
