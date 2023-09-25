@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # WOFI STYLES
-CONFIG="$HOME/.config/hypr/wofi/WofiBig/config"
-STYLE="$HOME/.config/hypr/wofi/style.css"
-COLORS="$HOME/.config/hypr/wofi/colors"
+CONFIG="$HOME/.config/wofi/WofiBig/config"
+STYLE="$HOME/.config/wofi/style.css"
+COLORS="$HOME/.config/wofi/colors"
 
 if [[ ! $(pidof wofi) ]]; then
   cliphist list | wofi --show dmenu --prompt 'Search...' \

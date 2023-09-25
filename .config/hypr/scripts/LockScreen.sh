@@ -1,5 +1,5 @@
 #!/bin/bash
 
-CONFIG="$HOME/.config/hypr/swaylock/config"
+CONFIG="$HOME/.config/swaylock/config"
 
 sleep 0.5s; swaylock --config ${CONFIG} & disown
