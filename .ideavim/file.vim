@@ -24,4 +24,7 @@ let g:WhichKeyDesc_f_n = "<leader>fn    新建文件"
 nnoremap <Leader>fn :action NewElement<CR>
 vnoremap <Leader>fn <Esc>:action NewElement<CR>
 
+let g:WhichKeyDesc_f_t = "<leader>ft   全局替换"
+nnoremap <Leader>ft :action ReplaceInPath<CR>
+vnoremap <Leader>ft <Esc>:action ReplaceInPath<CR>
 

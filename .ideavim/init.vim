@@ -1,8 +1,8 @@
-source /Users/kael/.ideavim/file.vim
-source /Users/kael/.ideavim/search.vim
-source /Users/kael/.ideavim/lsp.vim
-source /Users/kael/.ideavim/git.vim
-source /Users/kael/.ideavim/view.vim
-source /Users/kael/.ideavim/open.vim
-source /Users/kael/.ideavim/project.vim
-source /Users/kael/.ideavim/delete.vim
+source /home/kael/.ideavim/file.vim
+source /home/kael/.ideavim/search.vim
+source /home/kael/.ideavim/lsp.vim
+source /home/kael/.ideavim/git.vim
+source /home/kael/.ideavim/view.vim
+source /home/kael/.ideavim/open.vim
+source /home/kael/.ideavim/project.vim
+source /home/kael/.ideavim/delete.vim

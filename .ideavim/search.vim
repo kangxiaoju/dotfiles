@@ -1,33 +1,33 @@
-let g:WhichKeyDesc_Buffer = "<leader>f   搜索"
+let g:WhichKeyDesc_Buffer = "<leader>s   搜索"
 
-let g:WhichKeyDesc_f_a = "<leader>fa   搜索所有"
-nnoremap <Leader>fa :action SearchEverywhere<CR>
-vnoremap <Leader>fa <Esc>:action SearchEverywhere<CR>
+let g:WhichKeyDesc_s_a = "<leader>sa   搜索所有"
+nnoremap <Leader>sa :action SearchEverywhere<CR>
+vnoremap <Leader>sa <Esc>:action SearchEverywhere<CR>
 
-let g:WhichKeyDesc_f_r = "<leader>fr   全局替换"
-nnoremap <Leader>fr :action ReplaceInPath<CR>
-vnoremap <Leader>fr <Esc>:action ReplaceInPath<CR>
+let g:WhichKeyDesc_s_p = "<leader>sp   全局搜索"
+nnoremap <Leader>sp :action FindInPath<CR>
+vnoremap <Leader>sp <Esc>:action FindInPath<CR>
 
-let g:WhichKeyDesc_f_w = "<leader>fw   全局搜索"
-nnoremap <Leader>fw :action FindInPath<CR>
-vnoremap <Leader>fw <Esc>:action FindInPath<CR>
+let g:WhichKeyDesc_s_A = "<leader>sA   搜索Action"
+nnoremap <Leader>sA :action GotoAction<CR>
+vnoremap <Leader>sA <Esc>:action GotoAction<CR>
 
-let g:WhichKeyDesc_f_A = "<leader>fA   搜索Action"
-nnoremap <Leader>fA :action GotoAction<CR>
-vnoremap <Leader>fA <Esc>:action GotoAction<CR>
+let g:WhichKeyDesc_s_c = "<leader>sc   搜索Class"
+nnoremap <Leader>sc :action GotoClass<CR>
+vnoremap <Leader>sc <Esc>:action GotoClass<CR>
 
-let g:WhichKeyDesc_f_c = "<leader>fc   搜索Class"
-nnoremap <Leader>fc :action GotoClass<CR>
-vnoremap <Leader>fc <Esc>:action GotoClass<CR>
+let g:WhichKeyDesc_s_f = "<leader>sf   搜索文件"
+nnoremap <Leader>sf :action GotoFile<CR>
+vnoremap <Leader>sf <Esc>:action GotoFile<CR>
 
-let g:WhichKeyDesc_f_f = "<leader>ff   搜索文件"
-nnoremap <Leader>ff :action GotoFile<CR>
-vnoremap <Leader>ff <Esc>:action GotoFile<CR>
+let g:WhichKeyDesc_s_s = "<leader>ss   搜索Symbol"
+nnoremap <Leader>ss :action GotoSymbol<CR>
+vnoremap <Leader>ss <Esc>:action GotoSymbol<CR>
 
-let g:WhichKeyDesc_f_s = "<leader>fs   搜索Symbol"
-nnoremap <Leader>fs :action GotoSymbol<CR>
-vnoremap <Leader>fs <Esc>:action GotoSymbol<CR>
+let g:WhichKeyDesc_s_b = "<leader>sb   缓冲区搜索"
+nnoremap <Leader>sb :action Switcher<CR>
+vnoremap <Leader>sb <Esc>:action Switcher<CR>
 
-let g:WhichKeyDesc_f_b = "<leader>fb   缓冲区搜索"
-nnoremap <Leader>fb :action Switcher<CR>
-vnoremap <Leader>fb <Esc>:action Switcher<CR>
+let g:WhichKeyDesc_s_w = "<leader>sw   文件内搜索文本"
+nnoremap <Leader>sw :action Find<CR>
+vnoremap <Leader>sw <Esc>:action Find<CR>
