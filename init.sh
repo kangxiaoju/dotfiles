@@ -90,7 +90,7 @@ sudo systemctl enable lightdm;
 sudo cp -r ~/Pictures/wallpapers/* /usr/share/backgrounds/
 
 # 安装中文输入法
-yay -S --noconfirm --needed fcitx5-chinese-addons fcitx5-git fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-configtool fcitx5-pinyin-moegirl;
+yay -S --noconfirm --needed fcitx5-chinese-addons fcitx5-git fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-configtool fcitx5-pinyin-moegirl fcitx5-input-support;
 mkdir -p ~/.local/share/fcitx5/themes/fcitx5-dark-transparent;
 git clone https://github.com/hosxy/fcitx5-dark-transparent.git ~/.local/share/fcitx5/themes/fcitx5-dark-transparent;
 mkdir -p ~/.config/fcitx5/conf;
